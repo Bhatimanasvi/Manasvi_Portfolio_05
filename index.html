@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Manasvi Bhati | Social Media Manager & Content Strategist</title>
+<meta name="description" content="Digital marketing and social media professional skilled in content planning, copywriting, and design.">
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          cream: {
+            50: '#FCFBF8',
+            100: '#FAF7F2',
+            200: '#F3EDE2',
+            300: '#E7DDCB',
+          },
+          forest: {
+            DEFAULT: '#1A2E26',
+            light: '#274238',
+            dark: '#11201A',
+            deep: '#0F1A15'
+          },
+          blossom: {
+            pink: '#FFB7C5',
+            soft: '#FFD1DC',
+            deep: '#E8A5B8',
+            light: '#FFF0F3'
+          },
+          gold: '#FFB703'
+        },
+        fontFamily: {
+          serif: ['"Bricolage Grotesque"', 'Georgia', 'serif'],
+          sans: ['"DM Sans"', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+<style>
+  /* Base styles & Smooth Custom Scrollbar */
+  :root {
+    --bg-color: #FAF7F2;
+    --text-color: #1A2E26;
+  }
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: "DM Sans", sans-serif;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* Custom Cursor Elements */
+  #cursor-dot, #cursor-ring {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 9999;
+    transition: transform 0.1s ease-out, opacity 0.2s ease;
+  }
+  #cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #E8A5B8;
+    box-shadow: 0 0 10px rgba(232, 165, 184, 0.8);
+  }
+  #cursor-ring {
+    width: 32px;
+    height: 32px;
+    border: 1.5px solid rgba(232, 165, 184, 0.6);
+    background-color: rgba(255, 183, 197, 0.1);
+    transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
+  }
+
+  /* Glassmorphism Cards */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(231, 221, 203, 0.8);
+  }
+
+  .dark-glass-card {
+    background: rgba(23, 40, 32, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 183, 197, 0.25);
+  }
+
+  /* Interactive Tile Grid */
+  .tile {
+    aspect-ratio: 4/5;
+    border: 1.5px dashed #274238;
+    border-radius: 8px;
+    background: transparent;
+    color: #274238;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .tile:hover {
+    background: rgba(255, 183, 197, 0.2);
+    border-color: #E8A5B8;
+    transform: translateY(-2px);
+  }
+  .tile.on {
+    border-style: solid;
+    color: #1A2E26;
+    cursor: default;
+    animation: pop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .tile.on.r { background: #FFB703; border-color: #E0A200; }
+  .tile.on.c { background: #FFB7C5; border-color: #E8A5B8; }
+  .tile.on.s { background: #9BE7C4; border-color: #7AD4AB; }
+
+  @keyframes pop {
+    0% { transform: scale(0.6); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  /* Canvas styling */
+  #blossom-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Section Spacing and Alignments */
+  .content-container {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Custom Toast */
+  .toast-banner {
+    transform: translate(-50%, 150%);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .toast-banner.show {
+    transform: translate(-50%, 0%);
+  }
+</style>
+</head>
+<body class="bg-cream-100 text-forest antialiased selection:bg-blossom-pink selection:text-forest">
+
+  <!-- Floating Cherry Blossom Petals Canvas -->
+  <canvas id="blossom-canvas"></canvas>
+
+  <!-- Custom Pink Tracking Cursor -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+
+  <div class="content-container">
+    <!-- Sticky XP Level Progress Header -->
+    <header class="sticky top-0 z-40 bg-cream-50/90 backdrop-blur-md border-b border-cream-300 shadow-sm">
+      <div class="max-w-6xl mx-auto px-4 py-2.5 flex items-center justify-between gap-4 text-xs sm:text-sm font-semibold">
+        <div class="flex items-center gap-2 min-w-[140px]">
+          <span class="w-2.5 h-2.5 rounded-full bg-blossom-deep animate-pulse"></span>
+          <span id="lvl" class="text-forest font-bold tracking-tight">Level 1: Rookie</span>
+        </div>
+        <div class="flex-1 max-w-md h-3 border border-forest/30 rounded-full bg-cream-200 overflow-hidden p-0.5">
+          <div id="fill" class="h-full bg-gradient-to-r from-blossom-deep via-blossom-pink to-gold rounded-full transition-all duration-500 ease-out w-0"></div>
+        </div>
+        <div id="pts" class="text-forest/70 font-mono text-xs whitespace-nowrap min-w-[70px] text-right">0 / 100 XP</div>
+      </div>
+    </header>
+
+    <!-- Top Navigation -->
+    <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="font-serif font-extrabold text-2xl tracking-tight text-forest">
+        MB<span class="text-blossom-deep">.</span>
+      </div>
+      <div class="hidden md:flex items-center gap-8 font-medium text-sm text-forest/80">
+        <a href="#about" class="hover:text-blossom-deep transition-colors">About</a>
+        <a href="#proofs" class="hover:text-blossom-deep transition-colors">Proofs</a>
+        <a href="#work" class="hover:text-blossom-deep transition-colors">Work</a>
+        <a href="#skills" class="hover:text-blossom-deep transition-colors">Skills</a>
+        <a href="#game-section" class="hover:text-blossom-deep transition-colors flex items-center gap-1.5">
+          <span>Mini Game</span>
+          <span class="px-1.5 py-0.5 text-[10px] bg-blossom-pink text-forest font-bold rounded-full">New</span>
+        </a>
+      </div>
+      <a href="mailto:manasvi.bhati05@gmail.com" class="bg-forest hover:bg-forest-light text-cream-50 px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all shadow-md hover:shadow-lg">
+        Hire Me
+      </a>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="about" class="max-w-6xl mx-auto px-6 py-12 md:py-20">
+      <div class="grid lg:grid-cols-12 gap-10 items-center">
+        <!-- Left Hero Text -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blossom-light/80 border border-blossom-pink text-forest text-xs font-bold uppercase tracking-wider">
+            <span class="w-2 h-2 rounded-full bg-blossom-deep animate-ping"></span>
+            Social Media & Content Professional
+          </div>
+
+          <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-forest leading-[1.12] tracking-[-0.02em]">
+            I plan content, make it, and publish on schedule.
+          </h1>
+
+          <p class="text-base sm:text-lg text-forest/80 leading-[1.7] max-w-2xl tracking-normal">
+            I’m Manasvi, a digital marketing and social media professional skilled in content planning, copywriting, and designing engaging reels, carousels, posts, posters, and marketing creatives using Canva and Photoshop. In August 2026, I planned, created, scheduled, and published 20 feed posts and daily stories for a bag brand while tracking content performance. I also bring experience in brand marketing and student outreach, combining creative storytelling with audience-focused communication to strengthen brand visibility and engagement.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a href="https://www.linkedin.com/in/manasvi-bhati" target="_blank" rel="noopener noreferrer" class="bg-forest text-cream-50 hover:bg-forest-light px-6 py-3.5 rounded-xl font-bold text-sm tracking-tight transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 flex items-center gap-2.5">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.72a1.47 1.47 0 0 0-1.47 1.47c0 .82.66 1.47 1.47 1.47a1.47 1.47 0 0 0 1.47-1.47c0-.81-.66-1.47-1.47-1.47Z"/></svg>
+              View LinkedIn Profile
+            </a>
+            <a href="mailto:manasvi.bhati05@gmail.com" class="glass-card hover:bg-cream-200 text-forest border border-cream-300 px-6 py-3.5 rounded-xl font-bold text-sm tracking-tight transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5">
+              Email Me
+            </a>
+          </div>
+
+          <p class="text-xs text-forest/70 pt-1 tracking-wide font-medium">
+            Based in Delhi • Fully Remote • Available to start immediately
+          </p>
+        </div>
+
+        <!-- Right Hero Interactive Game Card -->
+        <div class="lg:col-span-5">
+          <div class="glass-card p-6 rounded-2xl border border-cream-300 shadow-xl space-y-4">
+            <div class="flex items-center justify-between border-b border-cream-300/80 pb-3">
+              <div>
+                <h2 class="font-serif font-bold text-xl text-forest">Your turn: publish August</h2>
+                <p class="text-xs text-forest/70 mt-0.5">Tap each tile to publish a post & earn XP.</p>
+              </div>
+              <span class="text-xs font-mono font-bold bg-blossom-light text-blossom-deep px-2.5 py-1 rounded-full border border-blossom-pink/40">20 Posts</span>
+            </div>
+
+            <!-- Grid of 20 interactive tiles -->
+            <div id="posts-grid" class="grid grid-cols-5 gap-2"></div>
+
+            <div class="flex items-center justify-between text-xs font-bold text-forest/80 pt-1">
+              <span id="count" class="bg-cream-200 px-2.5 py-1 rounded-md">Published 0 of 20</span>
+              <span id="streak" class="text-forest/60">Missed days: 0</span>
+            </div>
+
+            <div class="flex items-center justify-start gap-4 text-[11px] font-medium text-forest/70 border-t border-cream-300/60 pt-2">
+              <span class="flex items-center gap-1.5"><i class="w-3 h-3 rounded bg-gold inline-block border border-black/10"></i> 11 reels</span>
+              <span class="flex items-center gap-1.5"><i class="w-3 h-3 rounded bg-blossom-pink inline-block border border-black/10"></i> 5 carousels</span>
+              <span class="flex items-center gap-1.5"><i class="w-3 h-3 rounded bg-[#9BE7C4] inline-block border border-black/10"></i> 4 statics</span>
+            </div>
+
+            <div id="done-banner" class="hidden p-3 rounded-xl bg-forest text-cream-50 text-xs font-semibold leading-relaxed border border-blossom-pink/30 animate-fade-in">
+              ✨ That’s the Divjot month: 20 feed posts at 5–6 a week, plus daily stories. Zero missed days!
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROOFS SECTION -->
+    <section id="proofs" class="max-w-6xl mx-auto px-6 py-16 border-t border-cream-200">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-forest mb-3 tracking-[-0.015em]">Six Proofs I Fit This Role</h2>
+        <p class="text-forest/70 text-sm sm:text-base leading-relaxed">The role is about planning a client’s content, delivering it on time, and working with creators. Tap a card to inspect and collect its badge.</p>
+      </div>
+
+      <div id="proofs-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </section>
+
+    <!-- CASE STUDY / WORK SECTION -->
+    <section id="work" class="max-w-6xl mx-auto px-6 py-16 border-t border-cream-200">
+      <div class="mb-10">
+        <span class="text-xs font-bold uppercase tracking-widest text-blossom-deep">Featured Experience</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-forest mt-1 tracking-[-0.015em]">Work & Campaigns</h2>
+      </div>
+
+      <!-- Main Case Study Card -->
+      <article class="glass-card p-6 sm:p-10 rounded-3xl border border-cream-300 shadow-xl mb-8">
+        <div class="flex flex-wrap items-start justify-between gap-4 border-b border-cream-300 pb-6 mb-6">
+          <div>
+            <div class="inline-block px-3 py-1 rounded-full bg-forest text-cream-50 text-xs font-bold uppercase tracking-wider mb-2">Paid Client Project</div>
+            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-forest">Divjot — Social Media Manager</h3>
+            <p class="text-sm text-forest/70 mt-1 font-medium">E-Commerce Bag Brand • August 2026</p>
+          </div>
+          <div class="text-right">
+            <span class="text-2xl font-bold text-forest font-mono">100%</span>
+            <p class="text-xs text-forest/60">On-Time Delivery</p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+          <div class="space-y-4">
+            <h4 class="font-serif font-bold text-lg text-forest">What I Executed</h4>
+            <ul class="space-y-3 text-sm text-forest/80 leading-relaxed">
+              <li class="flex items-start gap-2.5">
+                <span class="text-blossom-deep font-bold mt-0.5">✦</span>
+                <span>Published <strong>20 feed posts</strong> (11 reels, 5 carousels, 4 static posts) plus daily stories within a single month.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-blossom-deep font-bold mt-0.5">✦</span>
+                <span>Replaced irregular posting with structured content pillars, growing follower retention and engagement.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-blossom-deep font-bold mt-0.5">✦</span>
+                <span>Wrote captions and drafted reels tailored to parents, college students, and gift shoppers.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-blossom-deep font-bold mt-0.5">✦</span>
+                <span>Leveraged trending audio & identity hooks to drive top-of-funnel reach, recommending UGC reels and DM-focused CTAs.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="space-y-4 bg-cream-200/60 p-5 rounded-2xl border border-cream-300">
+            <h4 class="font-serif font-bold text-lg text-forest">August Campaign Timeline</h4>
+            <ol class="space-y-3 text-xs sm:text-sm">
+              <li class="flex items-center gap-3">
+                <span class="font-mono font-bold px-2 py-1 bg-gold text-forest rounded text-xs shrink-0">Aug 03</span>
+                <span class="text-forest/80">Back-to-School launch with fast multi-bag teaser reels</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="font-mono font-bold px-2 py-1 bg-blossom-pink text-forest rounded text-xs shrink-0">Aug 10, 22</span>
+                <span class="text-forest/80">“Soft Girl” lavender and black-and-white aesthetic drops</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="font-mono font-bold px-2 py-1 bg-[#9BE7C4] text-forest rounded text-xs shrink-0">Aug 15</span>
+                <span class="text-forest/80">Tricolor Independence Day special feature</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="font-mono font-bold px-2 py-1 bg-cream-300 text-forest rounded text-xs shrink-0">Aug 16, 26</span>
+                <span class="text-forest/80">Zipper close-ups, durability tests & range showcases</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="font-mono font-bold px-2 py-1 bg-forest text-cream-50 rounded text-xs shrink-0">Aug 29, 31</span>
+                <span class="text-forest/80">Collection drop teasers and month-end recap</span>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </article>
+
+      <!-- Secondary Work Cards -->
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="glass-card p-6 rounded-2xl border border-cream-300">
+          <h3 class="font-serif font-bold text-xl text-forest">College Societies</h3>
+          <p class="text-xs text-forest/60 font-medium mb-3">CCF, Fotografica, Enactus, Aahira • 2024–2026</p>
+          <ul class="space-y-2 text-xs sm:text-sm text-forest/80 leading-relaxed">
+            <li>• Planned, created, and scheduled reels, carousels, and interactive BTS story formats.</li>
+            <li>• Built weekly content calendars tied to events and maintained tone consistency.</li>
+            <li>• Analyzed Instagram Insights (reach, engagement rate) to optimize content.</li>
+          </ul>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl border border-cream-300">
+          <h3 class="font-serif font-bold text-xl text-forest">Hindi Bhawan, BVM Student Wing</h3>
+          <p class="text-xs text-forest/60 font-medium mb-3">Marketing & Social Media Volunteer • April–June 2026</p>
+          <ul class="space-y-2 text-xs sm:text-sm text-forest/80 leading-relaxed">
+            <li>• Developed creative concepts and content strategy for institutional events.</li>
+            <li>• Coordinated social media execution and community outreach during key campaigns.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS & TOOLKIT SECTION -->
+    <section id="skills" class="max-w-6xl mx-auto px-6 py-16 border-t border-cream-200">
+      <div class="mb-10">
+        <span class="text-xs font-bold uppercase tracking-widest text-blossom-deep">Capabilities</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-forest mt-1 tracking-[-0.015em]">My Toolkit & Strategy</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Content Strategy -->
+        <div class="glass-card p-5 rounded-2xl border border-cream-300 flex flex-col justify-between">
+          <div>
+            <h3 class="font-serif font-bold text-forest mb-3 text-base flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-blossom-deep"></span> Content Strategy
+            </h3>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="text-xs bg-forest text-cream-50 px-2.5 py-1 rounded-full font-medium">Content calendars</span>
+              <span class="text-xs bg-blossom-pink text-forest px-2.5 py-1 rounded-full font-medium">Campaign planning</span>
+              <span class="text-xs bg-cream-200 text-forest px-2.5 py-1 rounded-full font-medium">Reels & Short-Form</span>
+              <span class="text-xs bg-cream-200 text-forest px-2.5 py-1 rounded-full font-medium">Carousels</span>
+              <span class="text-xs bg-cream-200 text-forest px-2.5 py-1 rounded-full font-medium">Copywriting</span>
+              <span class="text-xs bg-cream-200 text-forest px-2.5 py-1 rounded-full font-medium">Scriptwriting</span>
+              <span class="text-xs bg-cream-200 text-forest px-2.5 py-1 rounded-full font-medium">Video Editing</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Media Management -->
+        <div class="glass-card p-5 rounded-2xl border border-cream-300 flex flex-col justify-between">
+          <div>
+            <h3 class="font-serif font-bold text-forest mb-3 text-base flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-gold"></span> Social Media
+            </h3>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="text-xs bg-cream-200 text-forest px-2.5 py-1 rounded-full font-medium">Instagram</span>
+              <span class="text-xs bg-cream-200 text-forest px-2.5 py-1 rounded-full font-medium">Meta Business Suite</span>
+              <span class="text-xs bg-blossom-pink text-forest px-2.5 py-1 rounded-full font-medium">Brand Voice</span>
+              <span class="text-xs bg-cream-200 text-forest px-2.5 py-1 rounded-full font-medium">Trend Research</span>
+              <span class="text-xs bg-cream-200 text-forest px-2.5 py-1 rounded-full font-medium">Community Engagement</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Analytics -->
+        <div class="glass-card p-5 rounded-2xl border border-cream-300 flex flex-col justify-between">
+          <div>
+            <h3 class="font-serif font-bold text-forest mb-3 text-base flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#9BE7C4]"></span> Analytics
+            </h3>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="text-xs bg-cream-200 text-forest px-2.5 py-1 rounded-full font-medium">Instagram Insights</span>
+              <span class="text-xs bg-cream-200 text-forest px-2.5 py-1 rounded-full font-medium">Google Analytics 4</span>
+              <span class="text-xs bg-blossom-soft text-forest px-2.5 py-1 rounded-full font-medium">Engagement Tracking</span>
+              <span class="text-xs bg-cream-200 text-forest px-2.5 py-1 rounded-full font-medium">Monthly Reporting</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tools -->
+        <div class="glass-card p-5 rounded-2xl border border-cream-300 flex flex-col justify-between">
+          <div>
+            <h3 class="font-serif font-bold text-forest mb-3 text-base flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-forest"></span> Tools & AI
+            </h3>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="text-xs bg-cream-200 text-forest px-2.5 py-1 rounded-full font-medium">Canva</span>
+              <span class="text-xs bg-cream-200 text-forest px-2.5 py-1 rounded-full font-medium">Photoshop</span>
+              <span class="text-xs bg-cream-200 text-forest px-2.5 py-1 rounded-full font-medium">CapCut</span>
+              <span class="text-xs bg-cream-200 text-forest px-2.5 py-1 rounded-full font-medium">InShot</span>
+              <span class="text-xs bg-blossom-pink text-forest px-2.5 py-1 rounded-full font-medium">ChatGPT</span>
+              <span class="text-xs bg-cream-200 text-forest px-2.5 py-1 rounded-full font-medium">Perplexity</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION & LEADERSHIP SECTION -->
+    <section id="education" class="max-w-6xl mx-auto px-6 py-16 border-t border-cream-200">
+      <div class="grid md:grid-cols-2 gap-10">
+        <!-- Education & Certifications -->
+        <div class="space-y-6">
+          <h2 class="font-serif text-2xl font-bold text-forest border-b border-cream-300 pb-3">Education & Certifications</h2>
+
+          <div class="space-y-2">
+            <h3 class="font-bold text-lg text-forest">B.S. Digital Marketing & Data Analytics</h3>
+            <p class="text-xs text-forest/70 font-medium">Delhi Skill and Entrepreneurship University (DSEU), Dwarka • 2024–2028</p>
+            <p class="text-xs text-forest/80 font-semibold bg-blossom-light/60 inline-block px-2.5 py-1 rounded border border-blossom-pink/30">
+              SGPA: 9.45 (Sem 4) • CGPA: 8.90 • CBSE Board: 93%
+            </p>
+          </div>
+
+          <div class="pt-4 space-y-3">
+            <h4 class="font-bold text-sm text-forest uppercase tracking-wider">Certifications</h4>
+            <ul class="space-y-2 text-xs sm:text-sm text-forest/80">
+              <li class="flex items-start gap-2">
+                <span class="text-blossom-deep font-bold">✓</span>
+                <span><strong>AI in Digital Marketing</strong> — Internshala Trainings, Nov 2025 (Scored 93%; Top Performer)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-blossom-deep font-bold">✓</span>
+                <span><strong>Fundamentals of Digital Marketing</strong> — Google Digital Garage, 2024</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-blossom-deep font-bold">✓</span>
+                <span><strong>Introduction to Digital Marketing</strong> — Great Learning, 2024</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-blossom-deep font-bold">✓</span>
+                <span><strong>Digital Marketing Course</strong> — Tutedude (Expected Dec 2026)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Leadership & Events -->
+        <div class="space-y-6">
+          <h2 class="font-serif text-2xl font-bold text-forest border-b border-cream-300 pb-3">Leadership & Achievements</h2>
+          <ul class="space-y-3 text-xs sm:text-sm text-forest/80 leading-relaxed">
+            <li class="flex items-start gap-2.5">
+              <span class="p-1 rounded-full bg-blossom-soft text-forest text-xs font-bold">★</span>
+              <span><strong>Host</strong> for College Foundation Day at Centre for Cultural Resources and Training (CCRT).</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="p-1 rounded-full bg-blossom-soft text-forest text-xs font-bold">★</span>
+              <span><strong>Scriptwriting Head</strong> for College Productions, crafting scripts and narratives.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="p-1 rounded-full bg-blossom-soft text-forest text-xs font-bold">★</span>
+              <span><strong>First Place Winner</strong> in debate, speech, poetry, and Chrysalis tech competition; 2nd place in ICAR/IARI Speech Contest.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="p-1 rounded-full bg-blossom-soft text-forest text-xs font-bold">★</span>
+              <span>Featured audience participant asking questions at live SIDBI MSME Samvaad recording.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- END GAME SECTION: "Catch The Leads! 🚀" -->
+    <section id="game-section" class="max-w-6xl mx-auto px-6 py-16 border-t border-cream-200">
+      <div class="dark-glass-card rounded-3xl p-6 sm:p-10 text-center shadow-2xl relative overflow-hidden">
+        
+        <div class="mb-4">
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-blossom-soft tracking-tight flex items-center justify-center gap-2">
+            Catch The Leads! 🚀
+          </h2>
+          <p class="text-xs sm:text-sm text-cream-200/80 max-w-xl mx-auto mt-2 leading-relaxed">
+            Use keyboard <strong class="text-cream-50">Arrow Keys</strong> or touch controls to steer your campaign strategy. Eat <strong class="text-gold">High ROAS Leads (Gold)</strong> and avoid running into walls!
+          </p>
+        </div>
+
+        <!-- Snake Canvas Container -->
+        <div class="relative inline-block my-4">
+          <canvas id="snake-canvas" width="320" height="320" class="bg-forest-deep border-2 border-blossom-pink/60 rounded-2xl shadow-inner max-w-full"></canvas>
+          <div id="game-overlay" class="absolute inset-0 bg-forest-dark/80 backdrop-blur-xs rounded-2xl flex flex-col items-center justify-center p-4">
+            <p id="game-overlay-title" class="font-serif text-xl font-bold text-cream-50 mb-2">Ready to Launch?</p>
+            <button id="start-game-btn" type="button" class="bg-blossom-pink hover:bg-blossom-deep text-forest px-6 py-2.5 rounded-full font-bold text-sm tracking-wide shadow-lg transition-transform hover:scale-105 active:scale-95">
+              Start Campaign
+            </button>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-center gap-6 mt-2">
+          <div class="text-cream-50 text-sm font-bold font-mono">
+            Leads: <span id="lead-score" class="text-gold text-base">0</span>
+          </div>
+          <div class="text-cream-200/70 text-xs font-mono">
+            Best Score: <span id="best-score" class="text-blossom-pink">0</span>
+          </div>
+        </div>
+
+        <!-- Mobile Touch Controls -->
+        <div class="grid grid-cols-3 gap-2 max-w-[180px] mx-auto mt-6 md:hidden">
+          <div></div>
+          <button id="btn-up" class="bg-forest-light text-cream-50 p-3 rounded-xl border border-blossom-pink/30 text-xs font-bold active:bg-blossom-pink active:text-forest">▲</button>
+          <div></div>
+          <button id="btn-left" class="bg-forest-light text-cream-50 p-3 rounded-xl border border-blossom-pink/30 text-xs font-bold active:bg-blossom-pink active:text-forest">◄</button>
+          <button id="btn-down" class="bg-forest-light text-cream-50 p-3 rounded-xl border border-blossom-pink/30 text-xs font-bold active:bg-blossom-pink active:text-forest">▼</button>
+          <button id="btn-right" class="bg-forest-light text-cream-50 p-3 rounded-xl border border-blossom-pink/30 text-xs font-bold active:bg-blossom-pink active:text-forest">►</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FOOTER / CONTACT SECTION -->
+    <footer id="contact" class="bg-forest text-cream-50 pt-16 pb-12 rounded-t-3xl border-t border-cream-300/20">
+      <div class="max-w-6xl mx-auto px-6 text-center space-y-6">
+        <h2 class="font-serif text-3xl sm:text-5xl font-bold tracking-tight">Let’s talk about your content.</h2>
+        <p class="text-cream-200/80 max-w-xl mx-auto text-sm sm:text-base">
+          I’m open to remote social media and digital marketing roles and available to start immediately.
+        </p>
+
+        <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+          <a href="mailto:manasvi.bhati05@gmail.com" class="bg-gold text-forest hover:bg-gold/90 px-6 py-3.5 rounded-xl font-bold text-sm tracking-tight transition-all shadow-md">
+            manasvi.bhati05@gmail.com
+          </a>
+          <a href="https://www.linkedin.com/in/manasvi-bhati" target="_blank" rel="noopener noreferrer" class="border border-cream-50/30 hover:bg-cream-50/10 text-cream-50 px-6 py-3.5 rounded-xl font-bold text-sm tracking-tight transition-all">
+            LinkedIn Profile
+          </a>
+        </div>
+
+        <div id="win-banner" class="hidden max-w-md mx-auto p-4 rounded-xl bg-blossom-pink text-forest font-bold text-xs tracking-wide border border-white/20 mt-6 animate-bounce">
+          🏆 Achievement Unlocked: Interview Ready! You collected all 100 XP. Send me a message!
+        </div>
+
+        <div class="border-t border-cream-50/10 pt-8 text-xs text-cream-200/50">
+          © 2026 Manasvi Bhati. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="toast-banner fixed bottom-6 left-1/2 bg-gold text-forest border border-forest font-bold px-5 py-3 rounded-2xl shadow-2xl z-50 text-xs sm:text-sm flex items-center gap-2" role="status">
+      <span class="text-base">✨</span> <span id="toast-msg">Level Up!</span>
+    </div>
+
+  </div>
+
+  <script>
+    (function(){
+      // -------------------------------------------------------------
+      // 1. GAME & XP STATE MANAGEMENT
+      // -------------------------------------------------------------
+      let xp = 0;
+      let pubCount = 0;
+      let openedCards = 0;
+      const maxXP = 100;
+      const levels = [
+        [0, "Rookie"],
+        [25, "Planner"],
+        [50, "Creator"],
+        [75, "Closer"],
+        [100, "Interview Ready"]
+      ];
+
+      const $ = (id) => document.getElementById(id);
+      let toastTimer;
+
+      function showToast(msg) {
+        const t = $("toast");
+        $("toast-msg").textContent = msg;
+        t.classList.add("show");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          t.classList.remove("show");
+        }, 2800);
+      }
+
+      function addXP(pts) {
+        const prevXP = xp;
+        xp = Math.min(maxXP, xp + pts);
+        $("fill").style.width = xp + "%";
+        $("pts").textContent = xp + " / " + maxXP + " XP";
+
+        let currentLvlIdx = 0;
+        levels.forEach((lvl, idx) => {
+          if (xp >= lvl[0]) currentLvlIdx = idx;
+        });
+
+        $("lvl").textContent = "Level " + (currentLvlIdx + 1) + ": " + levels[currentLvlIdx][1];
+
+        levels.forEach((lvl, idx) => {
+          if (prevXP < lvl[0] && xp >= lvl[0] && idx > 0) {
+            showToast("Level Up: " + lvl[1] + "!");
+          }
+        });
+
+        if (xp >= maxXP) {
+          $("win-banner").classList.remove("hidden");
+        }
+      }
+
+      // -------------------------------------------------------------
+      // 2. HERO TILE PUBLISHING GAME (20 Tiles)
+      // -------------------------------------------------------------
+      const tileSequence = "rcrrsrcrsrcrrcsrrcsr".split("");
+      const tileNames = { r: "reel", c: "carousel", s: "static post" };
+      const tileLabels = { r: "R", c: "C", s: "S" };
+      const postsContainer = $("posts-grid");
+
+      tileSequence.forEach((type, i) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "tile " + type;
+        btn.textContent = "+";
+        btn.setAttribute("aria-label", "Post " + (i + 1) + " of 20, " + tileNames[type] + ". Publish");
+
+        btn.addEventListener("click", () => {
+          if (btn.classList.contains("on")) return;
+          btn.classList.add("on");
+          btn.textContent = tileLabels[type];
+          pubCount++;
+          $("count").textContent = "Published " + pubCount + " of 20";
+          addXP(2); // 20 tiles * 2 XP = 40 XP
+
+          if (pubCount === 20) {
+            $("done-banner").classList.remove("hidden");
+            showToast("August Delivered! 20/20 Posts Completed.");
+          }
+        });
+        postsContainer.appendChild(btn);
+      });
+
+      // -------------------------------------------------------------
+      // 3. PROOFS / BADGES CARDS
+      // -------------------------------------------------------------
+      const proofsData = [
+        ["Plan content ahead", "Weekly content calendars for four college societies.", "At Divjot, I replaced irregular posting with structured content calendars and pillars: reels, carousels, and statics."],
+        ["Deliver on time", "5–6 posts a week, no missed days, August 2026.", "Plus daily stories, maintaining brand voice across all 20 feed deliverables."],
+        ["Work with creative teams", "Lined up digital content with offline campaigns.", "Worked seamlessly with creative and ops teams, standardizing visual brand guidelines."],
+        ["Know good content", "I write, shoot, edit, and design it myself.", "Proficient in Canva, CapCut, InShot, and Photoshop. I craft high-retention reel hooks."],
+        ["Learn tools fast", "ChatGPT & Perplexity integrated in my workflow.", "Scored 93% and earned Top Performer status in AI in Digital Marketing training."],
+        ["Remote and ready", "Delhi-based and fully remote capable.", "Equipped with high-speed setups and available for immediate start."]
+      ];
+
+      const proofsContainer = $("proofs-grid");
+      proofsData.forEach((p) => {
+        const card = document.createElement("button");
+        card.type = "button";
+        card.className = "glass-card p-6 rounded-2xl text-left border border-cream-300 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between group";
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="font-serif font-bold text-lg text-forest group-hover:text-blossom-deep transition-colors">${p[0]}</h3>
+              <span class="badge-icon text-[11px] bg-cream-200 text-forest px-2.5 py-0.5 rounded-full font-bold">Proof</span>
+            </div>
+            <p class="text-xs text-forest/70 leading-relaxed mb-3">${p[1]}</p>
+            <p class="more-text hidden text-xs text-forest bg-blossom-light/60 p-3 rounded-xl border border-blossom-pink/30 mb-3 leading-relaxed">${p[2]}</p>
+          </div>
+          <span class="tag-label text-[11px] font-bold text-blossom-deep flex items-center gap-1">
+            <span>Tap to collect proof</span> →
+          </span>
+        `;
+
+        card.addEventListener("click", () => {
+          const more = card.querySelector(".more-text");
+          const badge = card.querySelector(".badge-icon");
+          const tag = card.querySelector(".tag-label");
+
+          if (more.classList.contains("hidden")) {
+            more.classList.remove("hidden");
+            badge.className = "badge-icon text-[11px] bg-blossom-pink text-forest px-2.5 py-0.5 rounded-full font-bold";
+            badge.textContent = "★ Unlocked";
+            tag.innerHTML = '<span class="text-emerald-800">✓ Proof Collected (+10 XP)</span>';
+            card.classList.add("border-blossom-pink");
+            openedCards++;
+            addXP(10); // 6 cards * 10 XP = 60 XP
+            if (openedCards === 6) showToast("All 6 Proof Badges Collected!");
+          }
+        });
+        proofsContainer.appendChild(card);
+      });
+
+      // -------------------------------------------------------------
+      // 4. CHERRY BLOSSOM PETALS CANVAS ANIMATION
+      // -------------------------------------------------------------
+      const canvas = $("blossom-canvas");
+      const ctx = canvas.getContext("2d");
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+
+      window.addEventListener("resize", () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const petals = [];
+      const petalCount = 28;
+      const colors = ["#FFB7C5", "#FFD1DC", "#E8A5B8", "#FFF0F3"];
+
+      for (let i = 0; i < petalCount; i++) {
+        petals.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          size: Math.random() * 7 + 5,
+          speedY: Math.random() * 1.2 + 0.6,
+          speedX: Math.random() * 0.8 - 0.4,
+          angle: Math.random() * 360,
+          spin: Math.random() * 2 - 1,
+          color: colors[Math.floor(Math.random() * colors.length)]
+        });
+      }
+
+      function drawPetals() {
+        ctx.clearRect(0, 0, width, height);
+        petals.forEach((p) => {
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.angle * Math.PI) / 180);
+          ctx.fillStyle = p.color;
+          ctx.globalAlpha = 0.65;
+          ctx.beginPath();
+          ctx.ellipse(0, 0, p.size, p.size / 2, 0, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+
+          p.y += p.speedY;
+          p.x += Math.sin(p.y / 30) + p.speedX;
+          p.angle += p.spin;
+
+          if (p.y > height + 20) {
+            p.y = -20;
+            p.x = Math.random() * width;
+          }
+        });
+        requestAnimationFrame(drawPetals);
+      }
+      drawPetals();
+
+      // -------------------------------------------------------------
+      // 5. CUSTOM PINK CURSOR TRACKER
+      // -------------------------------------------------------------
+      const dot = $("cursor-dot");
+      const ring = $("cursor-ring");
+      let mouseX = -100, mouseY = -100;
+      let ringX = -100, ringY = -100;
+
+      window.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        dot.style.left = mouseX + "px";
+        dot.style.top = mouseY + "px";
+      });
+
+      function renderCursor() {
+        ringX += (mouseX - ringX) * 0.15;
+        ringY += (mouseY - ringY) * 0.15;
+        ring.style.left = ringX + "px";
+        ring.style.top = ringY + "px";
+        requestAnimationFrame(renderCursor);
+      }
+      renderCursor();
+
+      // Expand ring on interactive elements hover
+      document.querySelectorAll("a, button, input, .tile, .glass-card").forEach((el) => {
+        el.addEventListener("mouseenter", () => {
+          ring.style.width = "48px";
+          ring.style.height = "48px";
+          ring.style.borderColor = "rgba(232, 165, 184, 0.9)";
+        });
+        el.addEventListener("mouseleave", () => {
+          ring.style.width = "32px";
+          ring.style.height = "32px";
+          ring.style.borderColor = "rgba(232, 165, 184, 0.6)";
+        });
+      });
+
+      // -------------------------------------------------------------
+      // 6. END GAME: "Catch The Leads! 🚀" (SNAKE MINI-GAME)
+      // -------------------------------------------------------------
+      const gCanvas = $("snake-canvas");
+      const gCtx = gCanvas.getContext("2d");
+      const gridSize = 16;
+      const tileCount = gCanvas.width / gridSize;
+
+      let snake = [{ x: 10, y: 10 }];
+      let dx = 1, dy = 0;
+      let food = { x: 5, y: 5 };
+      let leadsScore = 0;
+      let bestScore = 0;
+      let gameInterval = null;
+      let gameRunning = false;
+
+      function spawnFood() {
+        food.x = Math.floor(Math.random() * tileCount);
+        food.y = Math.floor(Math.random() * tileCount);
+        // Ensure food doesn't spawn on snake body
+        snake.forEach(part => {
+          if (part.x === food.x && part.y === food.y) spawnFood();
+        });
+      }
+
+      function gameLoop() {
+        const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+
+        // Wall collision
+        if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount) {
+          endGame();
+          return;
+        }
+
+        // Self collision
+        for (let i = 0; i < snake.length; i++) {
+          if (snake[i].x === head.x && snake[i].y === head.y) {
+            endGame();
+            return;
+          }
+        }
+
+        snake.unshift(head);
+
+        // Lead (food) collision
+        if (head.x === food.x && head.y === food.y) {
+          leadsScore += 1;
+          $("lead-score").textContent = leadsScore;
+          if (leadsScore > bestScore) {
+            bestScore = leadsScore;
+            $("best-score").textContent = bestScore;
+          }
+          spawnFood();
+        } else {
+          snake.pop();
+        }
+
+        drawGame();
+      }
+
+      function drawGame() {
+        // Dark green background
+        gCtx.fillStyle = "#0F1A15";
+        gCtx.fillRect(0, 0, gCanvas.width, gCanvas.height);
+
+        // Target: Gold ROAS Lead Dot
+        gCtx.fillStyle = "#FFB703";
+        gCtx.shadowColor = "#FFB703";
+        gCtx.shadowBlur = 8;
+        gCtx.beginPath();
+        gCtx.arc((food.x * gridSize) + gridSize/2, (food.y * gridSize) + gridSize/2, gridSize/2 - 2, 0, Math.PI * 2);
+        gCtx.fill();
+        gCtx.shadowBlur = 0; // reset blur
+
+        // Snake: Soft Pink Player Body
+        snake.forEach((part, index) => {
+          gCtx.fillStyle = index === 0 ? "#FFB7C5" : "#E8A5B8";
+          gCtx.beginPath();
+          gCtx.roundRect(part.x * gridSize + 1, part.y * gridSize + 1, gridSize - 2, gridSize - 2, 4);
+          gCtx.fill();
+        });
+      }
+
+      function startGame() {
+        snake = [{ x: 8, y: 8 }, { x: 7, y: 8 }];
+        dx = 1; dy = 0;
+        leadsScore = 0;
+        $("lead-score").textContent = "0";
+        spawnFood();
+        $("game-overlay").classList.add("hidden");
+        gameRunning = true;
+        clearInterval(gameInterval);
+        gameInterval = setInterval(gameLoop, 110);
+      }
+
+      function endGame() {
+        clearInterval(gameInterval);
+        gameRunning = false;
+        $("game-overlay-title").textContent = "Campaign Over! Leads Captured: " + leadsScore;
+        $("start-game-btn").textContent = "Retry Campaign";
+        $("game-overlay").classList.remove("hidden");
+      }
+
+      $("start-game-btn").addEventListener("click", startGame);
+
+      // Keyboard Controls
+      window.addEventListener("keydown", (e) => {
+        if (!gameRunning) return;
+        if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
+          e.preventDefault();
+        }
+        if (e.key === "ArrowUp" && dy !== 1) { dx = 0; dy = -1; }
+        if (e.key === "ArrowDown" && dy !== -1) { dx = 0; dy = 1; }
+        if (e.key === "ArrowLeft" && dx !== 1) { dx = -1; dy = 0; }
+        if (e.key === "ArrowRight" && dx !== -1) { dx = 1; dy = 0; }
+      });
+
+      // Touch Buttons
+      $("btn-up").addEventListener("click", () => { if (dy !== 1) { dx = 0; dy = -1; } });
+      $("btn-down").addEventListener("click", () => { if (dy !== -1) { dx = 0; dy = 1; } });
+      $("btn-left").addEventListener("click", () => { if (dx !== 1) { dx = -1; dy = 0; } });
+      $("btn-right").addEventListener("click", () => { if (dx !== -1) { dx = 1; dy = 0; } });
+
+      // Initial Canvas Draw
+      drawGame();
+
+    })();
+  </script>
+</body>
+</html>
