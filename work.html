@@ -3,19 +3,37 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Work Showcase & Case Studies | Manasvi Bhati</title>
+<title>Manasvi Bhati | Social Media Manager & Content Strategist</title>
+<meta name="description" content="Digital marketing and social media professional skilled in content planning, copywriting, visual content creation, and analytics. Remote & available immediately.">
+<!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<!-- Tailwind CSS CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
     theme: {
       extend: {
         colors: {
-          cream: { 50: '#FDFBF7', 100: '#FBF9F5', 200: '#F3EFE6', 300: '#E7DFD0' },
-          eucalyptus: { DEFAULT: '#1E332A', light: '#2B453A', dark: '#14241D' },
-          blossom: { pink: '#F4C2C2', soft: '#FFD1DC', deep: '#E89CAE', light: '#FFF0F3' },
+          cream: {
+            50: '#FDFBF7',
+            100: '#FBF9F5',
+            200: '#F3EFE6',
+            300: '#E7DFD0',
+          },
+          eucalyptus: {
+            DEFAULT: '#1E332A',
+            light: '#2B453A',
+            dark: '#14241D',
+            deep: '#0D1A14'
+          },
+          blossom: {
+            pink: '#F4C2C2',
+            soft: '#FFD1DC',
+            deep: '#E89CAE',
+            light: '#FFF0F3'
+          },
           gold: '#FFB703'
         },
         fontFamily: {
@@ -27,182 +45,1015 @@
   }
 </script>
 <style>
-  body { background-color: #FBF9F5; color: #1E332A; font-family: "DM Sans", sans-serif; }
-  .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(14px); border: 1px solid rgba(231, 223, 208, 0.8); }
+  :root {
+    --bg-color: #FBF9F5;
+    --text-color: #1E332A;
+  }
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: "DM Sans", sans-serif;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* Custom Pink Tracking Cursor */
+  #cursor-dot, #cursor-ring {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 9999;
+    transition: transform 0.1s ease-out, opacity 0.2s ease;
+  }
+  #cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #E89CAE;
+    box-shadow: 0 0 10px rgba(232, 156, 174, 0.8);
+  }
+  #cursor-ring {
+    width: 32px;
+    height: 32px;
+    border: 1.5px solid rgba(232, 156, 174, 0.6);
+    background-color: rgba(244, 194, 194, 0.15);
+    transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
+  }
+
+  /* Glassmorphism Cards */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(231, 223, 208, 0.8);
+  }
+
+  .dark-glass-card {
+    background: rgba(20, 36, 29, 0.94);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(232, 156, 174, 0.25);
+  }
+
+  #blossom-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .content-container {
+    position: relative;
+    z-index: 2;
+  }
+
+  .toast-banner {
+    transform: translate(-50%, 150%);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .toast-banner.show {
+    transform: translate(-50%, 0%);
+  }
+
+  /* Playful Sticker Effects */
+  .sticker-badge {
+    box-shadow: 4px 4px 0px #1E332A;
+    transition: transform 0.2s ease;
+  }
+  .sticker-badge:hover {
+    transform: rotate(-3deg) scale(1.05);
+  }
 </style>
 </head>
-<body class="bg-cream-100 text-eucalyptus antialiased">
+<body class="bg-cream-100 text-eucalyptus antialiased selection:bg-blossom-pink selection:text-eucalyptus">
 
-  <!-- Header Navigation -->
-  <nav class="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
-    <a href="./index.html" class="font-serif font-extrabold text-2xl tracking-tight text-eucalyptus flex items-center gap-2">
-      <span>Manasvi</span>
-      <span class="text-xs font-sans font-bold bg-blossom-light border-2 border-[#1E332A] shadow-[2px_2px_0px_#1E332A] px-3 py-1 rounded-full text-eucalyptus">
-        ✨ Campaign Alchemist
-      </span>
-    </a>
-    <a href="./index.html" class="bg-eucalyptus text-cream-50 hover:bg-eucalyptus-light px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all shadow-md">
-      ← Back to Home
-    </a>
-  </nav>
+  <!-- Floating Cherry Blossom Petals Canvas -->
+  <canvas id="blossom-canvas"></canvas>
 
-  <header class="max-w-6xl mx-auto px-6 py-8 text-center">
-    <span class="inline-block px-3.5 py-1 rounded-full bg-blossom-light border border-blossom-pink text-eucalyptus text-xs font-bold uppercase tracking-wider mb-3">
-      Recruiter Case Studies
-    </span>
-    <h1 class="font-serif text-4xl sm:text-5xl font-bold text-eucalyptus">Featured Work & Campaign Breakdown</h1>
-    <p class="text-eucalyptus/70 text-base max-w-2xl mx-auto mt-3">Divjot Bag Brand Case Studies: The marketing challenges, creative strategy executed, and bottom-line impact generated.</p>
-  </header>
+  <!-- Custom Pink Tracking Cursor -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
 
-  <main class="max-w-6xl mx-auto px-6 pb-20">
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+  <div class="content-container">
+    <!-- Sticky XP Level Progress Header -->
+    <header class="sticky top-0 z-40 bg-cream-50/90 backdrop-blur-md border-b border-cream-300 shadow-sm">
+      <div class="max-w-6xl mx-auto px-4 py-2.5 flex items-center justify-between gap-4 text-xs sm:text-sm font-semibold">
+        <div class="flex items-center gap-2 min-w-[140px]">
+          <span class="w-2.5 h-2.5 rounded-full bg-blossom-deep animate-pulse"></span>
+          <span id="lvl" class="text-eucalyptus font-bold tracking-tight">Level 1: Rookie</span>
+        </div>
+        <div class="flex-1 max-w-md h-3 border border-eucalyptus/30 rounded-full bg-cream-200 overflow-hidden p-0.5">
+          <div id="fill" class="h-full bg-gradient-to-r from-blossom-deep via-blossom-pink to-gold rounded-full transition-all duration-500 ease-out w-0"></div>
+        </div>
+        <div id="pts" class="text-eucalyptus/70 font-mono text-xs whitespace-nowrap min-w-[70px] text-right">0 / 100 XP</div>
+      </div>
+    </header>
 
-      <!-- CASE STUDY 1: Jerry Found His Favourite Bag -->
-      <article class="glass-card rounded-2xl overflow-hidden shadow-lg border border-cream-300 flex flex-col justify-between">
-        <div>
-          <video controls preload="metadata" playsinline class="w-full h-72 object-cover bg-black">
-            <source src="./assets/vdo2.mp4" type="video/mp4">
-            Your browser does not support playing this video.
-          </video>
-          <div class="p-5 space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="text-[10px] font-bold bg-blossom-pink text-eucalyptus px-2.5 py-1 rounded-full uppercase">Playful Reel</span>
-              <span class="text-[10px] font-mono text-eucalyptus/60 font-bold">Target: Parents & Kids</span>
+    <!-- Top Navigation -->
+    <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <!-- Rotating Logo & Adjective -->
+      <a href="./index.html" class="font-serif font-extrabold text-2xl tracking-tight text-eucalyptus flex items-center gap-2.5">
+        <span>Manasvi</span>
+        <span class="text-xs font-sans font-bold bg-blossom-light border-2 border-[#1E332A] shadow-[2px_2px_0px_#1E332A] px-3 py-1 rounded-full text-eucalyptus flex items-center gap-1.5 transition-all">
+          ✨ <span id="nav-adjective" class="transition-opacity duration-200">Campaign Alchemist</span>
+        </span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8 font-medium text-sm text-eucalyptus/80">
+        <a href="#about" class="hover:text-blossom-deep transition-colors">About</a>
+        <a href="#metrics" class="hover:text-blossom-deep transition-colors">Impact</a>
+        <a href="#proofs" class="hover:text-blossom-deep transition-colors">Proofs</a>
+        <a href="#work" class="hover:text-blossom-deep transition-colors">Work</a>
+        <a href="#skills" class="hover:text-blossom-deep transition-colors">Skills</a>
+        <a href="#game-section" class="hover:text-blossom-deep transition-colors flex items-center gap-1.5">
+          <span>Mini Game</span>
+          <span class="px-1.5 py-0.5 text-[10px] bg-blossom-pink text-eucalyptus font-bold rounded-full">New</span>
+        </a>
+      </div>
+      
+      <!-- Top Nav Resume Download CTA -->
+      <a href="./Manasvi_Bhati_Resume.pdf" download="Manasvi_Bhati_Resume.pdf" target="_blank" class="bg-eucalyptus hover:bg-eucalyptus-light text-cream-50 px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all shadow-md hover:shadow-lg flex items-center gap-2">
+        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
+        Resume
+      </a>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="about" class="max-w-6xl mx-auto px-6 py-12 md:py-16">
+      <div class="grid lg:grid-cols-12 gap-10 items-center">
+        <!-- Left Hero Text -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blossom-light/80 border border-blossom-pink text-eucalyptus text-xs font-bold uppercase tracking-wider">
+              <span class="w-2 h-2 rounded-full bg-blossom-deep animate-ping"></span>
+              Social Media & Content Professional
+            </span>
+            <span class="px-3 py-1 bg-gold/30 border border-gold text-eucalyptus text-xs font-bold rounded-full transform rotate-2">
+              🔥 Content Engine
+            </span>
+          </div>
+
+          <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-eucalyptus leading-[1.12] tracking-[-0.02em]">
+            I plan content, make it, and publish on schedule.
+          </h1>
+
+          <p class="text-base sm:text-lg text-eucalyptus/80 leading-[1.7] max-w-2xl tracking-normal">
+            I’m Manasvi, a digital marketing and social media professional skilled in content planning, copywriting, and designing engaging reels, carousels, posts, posters, and marketing creatives using Canva and Photoshop. In August 2026, I planned, created, scheduled, and published 20 feed posts and daily stories for a bag brand while tracking content performance. I also bring experience in brand marketing and student outreach, combining creative storytelling with audience-focused communication to strengthen brand visibility and engagement.
+          </p>
+
+          <!-- Hero Buttons -->
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a href="./Manasvi_Bhati_Resume.pdf" download="Manasvi_Bhati_Resume.pdf" target="_blank" class="bg-eucalyptus text-cream-50 hover:bg-eucalyptus-light px-6 py-3.5 rounded-xl font-bold text-sm tracking-tight transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 flex items-center gap-2.5">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+              Download Resume
+            </a>
+
+            <a href="./work.html" class="bg-blossom-pink text-eucalyptus hover:bg-blossom-deep border border-eucalyptus/20 px-6 py-3.5 rounded-xl font-bold text-sm tracking-tight transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 flex items-center gap-2.5">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+              View My Work
+            </a>
+
+            <a href="https://www.linkedin.com/in/manasvi-bhati" target="_blank" rel="noopener noreferrer" class="glass-card hover:bg-cream-200 text-eucalyptus border border-cream-300 px-6 py-3.5 rounded-xl font-bold text-sm tracking-tight transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 flex items-center gap-2">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.72a1.47 1.47 0 0 0-1.47 1.47c0 .82.66 1.47 1.47 1.47a1.47 1.47 0 0 0 1.47-1.47c0-.81-.66-1.47-1.47-1.47Z"/></svg>
+              LinkedIn Profile
+            </a>
+          </div>
+
+          <div class="flex flex-wrap gap-3 pt-3 text-xs font-bold font-sans">
+            <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#F4C2C2] text-[#1E332A] border-2 border-[#1E332A] shadow-[2px_2px_0px_#1E332A] transform -rotate-1 hover:rotate-0 hover:scale-105 transition-all cursor-default">
+              <span>📍 Based in Delhi</span>
+            </span>
+
+            <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#FFB703] text-[#1E332A] border-2 border-[#1E332A] shadow-[2px_2px_0px_#1E332A] transform rotate-2 hover:rotate-0 hover:scale-105 transition-all cursor-default">
+              <span>⚡ Fully Remote 🌍</span>
+            </span>
+
+            <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#9BE7C4] text-[#1E332A] border-2 border-[#1E332A] shadow-[2px_2px_0px_#1E332A] transform -rotate-1 hover:rotate-0 hover:scale-105 transition-all animate-pulse cursor-default">
+              <span>🔥 Available to start immediately</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Right Hero Interactive Game Card & Visual Phone Mockup -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="relative">
+            <!-- Sticker Accents -->
+            <div class="absolute -top-4 -right-2 bg-gold text-eucalyptus text-xs font-black px-3 py-1 rounded-full border border-eucalyptus sticker-badge z-20">
+              ⚡ 100% On-Time!
             </div>
             
-            <h3 class="font-serif text-lg font-bold text-eucalyptus leading-snug">Jerry Found His Favourite Bag</h3>
-
-            <!-- Case Study Breakdown -->
-            <div class="space-y-2 pt-2 border-t border-cream-200 text-xs">
-              <div class="bg-cream-50 p-2.5 rounded-xl border border-cream-200">
-                <span class="font-bold text-rose-700 block mb-0.5">⚠️ The Problem:</span>
-                <p class="text-eucalyptus/80 leading-relaxed">Low organic engagement on standard bag posts; parents were skipping generic product ads.</p>
+            <!-- Interactive Campaign Quiz Widget -->
+            <div class="glass-card rounded-2xl p-6 sm:p-8 border border-cream-300 shadow-xl max-w-xl mx-auto relative overflow-hidden">
+              <div class="flex items-center justify-between mb-6">
+                <div>
+                  <span class="text-[10px] font-bold bg-gold text-eucalyptus px-2.5 py-1 rounded-full uppercase tracking-wider">
+                    Interactive Challenge
+                  </span>
+                  <h2 class="font-serif text-2xl font-bold text-eucalyptus mt-2">Fix My Campaign! 🚀</h2>
+                </div>
+                <div class="text-right">
+                  <span class="text-xs text-eucalyptus/70 font-semibold block">Campaign Impact</span>
+                  <span id="roi-score" class="font-serif text-xl font-extrabold text-eucalyptus">Steady</span>
+                </div>
               </div>
 
-              <div class="bg-cream-50 p-2.5 rounded-xl border border-cream-200">
-                <span class="font-bold text-eucalyptus block mb-0.5">💡 My Strategy:</span>
-                <p class="text-eucalyptus/80 leading-relaxed">Integrated nostalgia & popular pop-culture character ("Jerry") into short storytelling format to capture immediate attention.</p>
-              </div>
-
-              <div class="bg-blossom-light/60 p-2.5 rounded-xl border border-blossom-pink/40">
-                <span class="font-bold text-emerald-800 block mb-0.5">🚀 The Result:</span>
-                <p class="text-eucalyptus font-semibold">Higher retention & +40% increase in DMs asking for kids' collection link.</p>
+              <div id="quiz-container">
+                <p id="quiz-scenario" class="text-sm sm:text-base font-medium text-eucalyptus/90 mb-5 leading-relaxed bg-cream-50 p-4 rounded-xl border border-cream-200">
+                  Loading campaign scenario...
+                </p>
+                <div id="quiz-options" class="space-y-3"></div>
+                <div id="quiz-feedback" class="hidden mt-4 p-3 rounded-lg text-xs font-bold text-center"></div>
               </div>
             </div>
           </div>
         </div>
-      </article>
+      </div>
+    </section>
 
-      <!-- CASE STUDY 2: Red Backpack -->
-      <article class="glass-card rounded-2xl overflow-hidden shadow-lg border border-cream-300 flex flex-col justify-between">
+    <!-- METRICS SECTION -->
+    <section id="metrics" class="max-w-6xl mx-auto px-6 py-10">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="glass-card p-6 rounded-2xl border border-cream-300 relative overflow-hidden group hover:border-blossom-deep transition-all">
+          <div class="font-serif font-extrabold text-3xl sm:text-4xl text-eucalyptus">20/20</div>
+          <div class="text-xs font-bold uppercase tracking-wider text-blossom-deep mt-1">Posts Published</div>
+          <p class="text-[11px] text-eucalyptus/70 mt-1">August 2026 Bag Campaign</p>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl border border-cream-300 relative overflow-hidden group hover:border-gold transition-all">
+          <div class="font-serif font-extrabold text-3xl sm:text-4xl text-eucalyptus">4</div>
+          <div class="text-xs font-bold uppercase tracking-wider text-gold mt-1">College Societies</div>
+          <p class="text-[11px] text-eucalyptus/70 mt-1">Weekly content calendars & reels</p>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl border border-cream-300 relative overflow-hidden group hover:border-emerald-500 transition-all">
+          <div class="font-serif font-extrabold text-3xl sm:text-4xl text-eucalyptus">93%</div>
+          <div class="text-xs font-bold uppercase tracking-wider text-emerald-600 mt-1">AI Marketing Score</div>
+          <p class="text-[11px] text-eucalyptus/70 mt-1">Internshala Top Performer</p>
+        </div>
+
+        <div class="glass-card p-6 rounded-2xl border border-cream-300 relative overflow-hidden group hover:border-blossom-deep transition-all">
+          <div class="font-serif font-extrabold text-3xl sm:text-4xl text-eucalyptus">9.45</div>
+          <div class="text-xs font-bold uppercase tracking-wider text-blossom-deep mt-1">Semester SGPA</div>
+          <p class="text-[11px] text-eucalyptus/70 mt-1">B.S. Analytics & Marketing</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROOFS SECTION -->
+    <section id="proofs" class="max-w-6xl mx-auto px-6 py-16 border-t border-cream-200">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="px-3 py-1 bg-blossom-light border border-blossom-pink text-eucalyptus text-xs font-bold rounded-full">
+          💡 Interactive Verification
+        </span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-eucalyptus mt-3 mb-3 tracking-[-0.015em]">Six Proofs I Fit This Role</h2>
+        <p class="text-eucalyptus/70 text-sm sm:text-base leading-relaxed">The role is about planning a client’s content, delivering it on time, and working with creators. Tap a card to inspect and collect its badge.</p>
+      </div>
+
+      <div id="proofs-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </section>
+
+    <!-- CASE STUDY / WORK SECTION WITH TRUTHFUL RESULTS -->
+    <section id="work" class="max-w-6xl mx-auto px-6 py-16 border-t border-cream-200">
+      <div class="mb-10 flex flex-wrap items-end justify-between gap-4">
         <div>
-          <video controls preload="metadata" playsinline class="w-full h-72 object-cover bg-black">
-            <source src="./assets/redbag.mp4" type="video/mp4">
-            Your browser does not support playing this video.
-          </video>
-          <div class="p-5 space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="text-[10px] font-bold bg-gold text-eucalyptus px-2.5 py-1 rounded-full uppercase">Product Showcase</span>
-              <span class="text-[10px] font-mono text-eucalyptus/60 font-bold">Target: Daily Commuters</span>
+          <span class="text-xs font-bold uppercase tracking-widest text-blossom-deep">Featured Experience</span>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-eucalyptus mt-1 tracking-[-0.015em]">Work & Campaigns</h2>
+        </div>
+        <span class="text-xs bg-cream-200 border border-cream-300 text-eucalyptus px-3 py-1.5 rounded-full font-bold">
+          📸 Verified Results & Highlights
+        </span>
+      </div>
+
+      <!-- Main Case Study Card -->
+      <article class="glass-card p-6 sm:p-10 rounded-3xl border border-cream-300 shadow-xl mb-8 overflow-hidden">
+        <div class="grid lg:grid-cols-12 gap-8 items-center mb-8">
+          <div class="lg:col-span-7 space-y-3">
+            <div class="inline-block px-3 py-1 rounded-full bg-eucalyptus text-cream-50 text-xs font-bold uppercase tracking-wider">Paid Client Project</div>
+            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-eucalyptus">Divjot — Social Media Manager</h3>
+            <p class="text-sm text-eucalyptus/70 font-medium">E-Commerce Bag Brand • August 2026</p>
+          </div>
+          <div class="lg:col-span-5 rounded-2xl overflow-hidden shadow-md border border-cream-300 relative group">
+            <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80" alt="Bag brand lifestyle content creation" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute bottom-2 left-2 bg-eucalyptus/90 text-cream-50 text-[10px] font-bold px-2.5 py-1 rounded-full backdrop-blur-xs">
+              🎒 Product Showcase & Styling
             </div>
+          </div>
+        </div>
 
-            <h3 class="font-serif text-lg font-bold text-eucalyptus leading-snug">Premium Quality Backpack</h3>
+        <div class="grid md:grid-cols-2 gap-8 lg:gap-12 pt-4 border-t border-cream-300">
+          <div class="space-y-4">
+            <h4 class="font-serif font-bold text-lg text-eucalyptus">What I Executed</h4>
+            <ul class="space-y-3 text-sm text-eucalyptus/80 leading-relaxed">
+              <li class="flex items-start gap-2.5">
+                <span class="text-blossom-deep font-bold mt-0.5">✦</span>
+                <span>Published <strong>20 feed posts</strong> (11 reels, 5 carousels, 4 static posts) plus daily stories within a single month with zero missed days.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-blossom-deep font-bold mt-0.5">✦</span>
+                <span>Replaced irregular posting with structured content pillars, growing follower retention and engagement.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-blossom-deep font-bold mt-0.5">✦</span>
+                <span>Wrote captions and drafted reels tailored to parents, college students, and gift shoppers.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-blossom-deep font-bold mt-0.5">✦</span>
+                <span>Leveraged trending audio & identity hooks to drive top-of-funnel reach, recommending UGC reels and DM-focused CTAs.</span>
+              </li>
+            </ul>
+          </div>
 
-            <!-- Case Study Breakdown -->
-            <div class="space-y-2 pt-2 border-t border-cream-200 text-xs">
-              <div class="bg-cream-50 p-2.5 rounded-xl border border-cream-200">
-                <span class="font-bold text-rose-700 block mb-0.5">⚠️ The Problem:</span>
-                <p class="text-eucalyptus/80 leading-relaxed">Customers were skeptical about product durability and compartment space from static photos.</p>
-              </div>
-
-              <div class="bg-cream-50 p-2.5 rounded-xl border border-cream-200">
-                <span class="font-bold text-eucalyptus block mb-0.5">💡 My Strategy:</span>
-                <p class="text-eucalyptus/80 leading-relaxed">Shot close-up feature callouts (zipper action, padding, water resistance) with fast-paced video edits.</p>
-              </div>
-
-              <div class="bg-blossom-light/60 p-2.5 rounded-xl border border-blossom-pink/40">
-                <span class="font-bold text-emerald-800 block mb-0.5">🚀 The Result:</span>
-                <p class="text-eucalyptus font-semibold">Cleared product feature doubts, resulting in 2.5x higher landing page click-throughs.</p>
-              </div>
-            </div>
+          <!-- REPLACED WITH TRUTHFUL & IMPRESSIVE RESULTS -->
+          <div class="space-y-4 bg-cream-200/60 p-5 rounded-2xl border border-cream-300">
+            <h4 class="font-serif font-bold text-lg text-eucalyptus">Campaign Deliverables & Real Impact</h4>
+            <ul class="space-y-3 text-xs sm:text-sm text-eucalyptus/80 leading-relaxed">
+              <li class="flex items-start gap-3">
+                <span class="w-2.5 h-2.5 rounded-full bg-blossom-deep mt-1 shrink-0"></span>
+                <span><strong>Pop-Culture Jerry Reel:</strong> Turned low initial engagement into active viewer interest with higher watch times and steady DM inquiries.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2.5 h-2.5 rounded-full bg-gold mt-1 shrink-0"></span>
+                <span><strong>Feature Callouts & Edits:</strong> Answered key customer questions directly through visuals, guiding viewers smoothly from reel to website.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#9BE7C4] mt-1 shrink-0"></span>
+                <span><strong>Campus Aesthetic Shoot:</strong> Organic shares extended reel reach effectively without relying on paid ad spend.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2.5 h-2.5 rounded-full bg-eucalyptus mt-1 shrink-0"></span>
+                <span><strong>Back-to-School Teaser:</strong> Generated strong audience buzz early in the launch window to accelerate inventory movement.</span>
+              </li>
+            </ul>
           </div>
         </div>
       </article>
 
-      <!-- CASE STUDY 3: Campus & Daily Commute -->
-      <article class="glass-card rounded-2xl overflow-hidden shadow-lg border border-cream-300 flex flex-col justify-between">
-        <div>
-          <video controls preload="metadata" playsinline class="w-full h-72 object-cover bg-black">
-            <source src="./assets/blackbag.mp4" type="video/mp4">
-            Your browser does not support playing this video.
-          </video>
-          <div class="p-5 space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="text-[10px] font-bold bg-[#9BE7C4] text-eucalyptus px-2.5 py-1 rounded-full uppercase">Lifestyle Reel</span>
-              <span class="text-[10px] font-mono text-eucalyptus/60 font-bold">Target: Gen-Z Students</span>
+      <!-- Secondary Work Cards -->
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="glass-card rounded-2xl border border-cream-300 overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="College society events and team" class="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute top-2 right-2 bg-blossom-pink text-eucalyptus text-[10px] font-bold px-2 py-0.5 rounded-full border border-eucalyptus">
+              🎓 4 Societies
             </div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-serif font-bold text-xl text-eucalyptus">College Societies</h3>
+            <p class="text-xs text-eucalyptus/60 font-medium mb-3">CCF, Fotografica, Enactus, Aahira • 2024–2026</p>
+            <ul class="space-y-2 text-xs sm:text-sm text-eucalyptus/80 leading-relaxed">
+              <li>• Planned, created, and scheduled reels, carousels, and interactive BTS story formats.</li>
+              <li>• Built weekly content calendars tied to events and maintained tone consistency.</li>
+              <li>• Analyzed Instagram Insights (reach, engagement rate) to optimize content.</li>
+            </ul>
+          </div>
+        </div>
 
-            <h3 class="font-serif text-lg font-bold text-eucalyptus leading-snug">Campus & Daily Commute</h3>
+        <div class="glass-card rounded-2xl border border-cream-300 overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80" alt="Event marketing and student outreach" class="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute top-2 right-2 bg-gold text-eucalyptus text-[10px] font-bold px-2 py-0.5 rounded-full border border-eucalyptus">
+              📢 Campaign Strategy
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-serif font-bold text-xl text-eucalyptus">Hindi Bhawan, BVM Student Wing</h3>
+            <p class="text-xs text-eucalyptus/60 font-medium mb-3">Marketing & Social Media Volunteer • April–June 2026</p>
+            <ul class="space-y-2 text-xs sm:text-sm text-eucalyptus/80 leading-relaxed">
+              <li>• Developed creative concepts and content strategy for institutional events.</li>
+              <li>• Coordinated social media execution and community outreach during key campaigns.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <!-- Case Study Breakdown -->
-            <div class="space-y-2 pt-2 border-t border-cream-200 text-xs">
-              <div class="bg-cream-50 p-2.5 rounded-xl border border-cream-200">
-                <span class="font-bold text-rose-700 block mb-0.5">⚠️ The Problem:</span>
-                <p class="text-eucalyptus/80 leading-relaxed">Brand lacked a distinct aesthetic connect with Gen-Z college students looking for trendy bags.</p>
-              </div>
+    <!-- SKILLS & TOOLKIT SECTION -->
+    <section id="skills" class="max-w-6xl mx-auto px-6 py-16 border-t border-cream-200">
+      <div class="mb-10">
+        <span class="text-xs font-bold uppercase tracking-widest text-blossom-deep">Capabilities</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-eucalyptus mt-1 tracking-[-0.015em]">My Toolkit & Strategy</h2>
+      </div>
 
-              <div class="bg-cream-50 p-2.5 rounded-xl border border-cream-200">
-                <span class="font-bold text-eucalyptus block mb-0.5">💡 My Strategy:</span>
-                <p class="text-eucalyptus/80 leading-relaxed">Produced a high-vibe campus aesthetic lifestyle shoot using trending audio and relatable college outfit pairings.</p>
-              </div>
-
-              <div class="bg-blossom-light/60 p-2.5 rounded-xl border border-blossom-pink/40">
-                <span class="font-bold text-emerald-800 block mb-0.5">🚀 The Result:</span>
-                <p class="text-eucalyptus font-semibold">Organic shares boosted reel reach by 300% without paid ad spend.</p>
-              </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Content Strategy -->
+        <div class="glass-card p-5 rounded-2xl border border-cream-300 flex flex-col justify-between">
+          <div>
+            <h3 class="font-serif font-bold text-eucalyptus mb-3 text-base flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-blossom-deep"></span> Content Strategy
+            </h3>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="text-xs bg-eucalyptus text-cream-50 px-2.5 py-1 rounded-full font-medium">Content calendars</span>
+              <span class="text-xs bg-blossom-pink text-eucalyptus px-2.5 py-1 rounded-full font-medium">Visual Content Creation</span>
+              <span class="text-xs bg-cream-200 text-eucalyptus px-2.5 py-1 rounded-full font-medium">Brand Visual Strategy</span>
+              <span class="text-xs bg-cream-200 text-eucalyptus px-2.5 py-1 rounded-full font-medium">Campaign Planning</span>
+              <span class="text-xs bg-cream-200 text-eucalyptus px-2.5 py-1 rounded-full font-medium">Reels & Short-Form</span>
+              <span class="text-xs bg-cream-200 text-eucalyptus px-2.5 py-1 rounded-full font-medium">Carousels</span>
+              <span class="text-xs bg-cream-200 text-eucalyptus px-2.5 py-1 rounded-full font-medium">Copywriting</span>
+              <span class="text-xs bg-cream-200 text-eucalyptus px-2.5 py-1 rounded-full font-medium">Scriptwriting</span>
             </div>
           </div>
         </div>
-      </article>
 
-      <!-- CASE STUDY 4: Dino & Space Collection -->
-      <article class="glass-card rounded-2xl overflow-hidden shadow-lg border border-cream-300 flex flex-col justify-between">
-        <div>
-          <video controls preload="metadata" playsinline class="w-full h-72 object-cover bg-black">
-            <source src="./assets/vdo1.mp4" type="video/mp4">
-            Your browser does not support playing this video.
-          </video>
-          <div class="p-5 space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="text-[10px] font-bold bg-blossom-soft text-eucalyptus px-2.5 py-1 rounded-full uppercase">New Arrival Drop</span>
-              <span class="text-[10px] font-mono text-eucalyptus/60 font-bold">Target: Back to School</span>
-            </div>
-
-            <h3 class="font-serif text-lg font-bold text-eucalyptus leading-snug">Dino & Space Collection</h3>
-
-            <!-- Case Study Breakdown -->
-            <div class="space-y-2 pt-2 border-t border-cream-200 text-xs">
-              <div class="bg-cream-50 p-2.5 rounded-xl border border-cream-200">
-                <span class="font-bold text-rose-700 block mb-0.5">⚠️ The Problem:</span>
-                <p class="text-eucalyptus/80 leading-relaxed">New inventory drop needed fast sales momentum before the school season peak ended.</p>
-              </div>
-
-              <div class="bg-cream-50 p-2.5 rounded-xl border border-cream-200">
-                <span class="font-bold text-eucalyptus block mb-0.5">💡 My Strategy:</span>
-                <p class="text-eucalyptus/80 leading-relaxed">Designed an urgent "Limited Stock / Back-to-School" teaser video with vibrant color highlights and strong CTA overlay.</p>
-              </div>
-
-              <div class="bg-blossom-light/60 p-2.5 rounded-xl border border-blossom-pink/40">
-                <span class="font-bold text-emerald-800 block mb-0.5">🚀 The Result:</span>
-                <p class="text-eucalyptus font-semibold">Driven high initial launch excitement, resulting in stock clearance in under 2 weeks.</p>
-              </div>
+        <!-- Social Media Management -->
+        <div class="glass-card p-5 rounded-2xl border border-cream-300 flex flex-col justify-between">
+          <div>
+            <h3 class="font-serif font-bold text-eucalyptus mb-3 text-base flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-gold"></span> Social Media
+            </h3>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="text-xs bg-cream-200 text-eucalyptus px-2.5 py-1 rounded-full font-medium">Instagram</span>
+              <span class="text-xs bg-cream-200 text-eucalyptus px-2.5 py-1 rounded-full font-medium">Meta Business Suite</span>
+              <span class="text-xs bg-blossom-pink text-eucalyptus px-2.5 py-1 rounded-full font-medium">Brand Voice</span>
+              <span class="text-xs bg-cream-200 text-eucalyptus px-2.5 py-1 rounded-full font-medium">Trend Research</span>
+              <span class="text-xs bg-cream-200 text-eucalyptus px-2.5 py-1 rounded-full font-medium">Audience Targeting</span>
+              <span class="text-xs bg-cream-200 text-eucalyptus px-2.5 py-1 rounded-full font-medium">Community Engagement</span>
             </div>
           </div>
         </div>
-      </article>
 
+        <!-- Analytics -->
+        <div class="glass-card p-5 rounded-2xl border border-cream-300 flex flex-col justify-between">
+          <div>
+            <h3 class="font-serif font-bold text-eucalyptus mb-3 text-base flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#9BE7C4]"></span> Analytics
+            </h3>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="text-xs bg-cream-200 text-eucalyptus px-2.5 py-1 rounded-full font-medium">Instagram Insights</span>
+              <span class="text-xs bg-cream-200 text-eucalyptus px-2.5 py-1 rounded-full font-medium">Google Analytics 4</span>
+              <span class="text-xs bg-blossom-soft text-eucalyptus px-2.5 py-1 rounded-full font-medium">Engagement Tracking</span>
+              <span class="text-xs bg-cream-200 text-eucalyptus px-2.5 py-1 rounded-full font-medium">Follower Growth Tracking</span>
+              <span class="text-xs bg-cream-200 text-eucalyptus px-2.5 py-1 rounded-full font-medium">Monthly Reports</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tools & AI -->
+        <div class="glass-card p-5 rounded-2xl border border-cream-300 flex flex-col justify-between">
+          <div>
+            <h3 class="font-serif font-bold text-eucalyptus mb-3 text-base flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-eucalyptus"></span> Tools & AI
+            </h3>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="text-xs bg-cream-200 text-eucalyptus px-2.5 py-1 rounded-full font-medium">Canva</span>
+              <span class="text-xs bg-cream-200 text-eucalyptus px-2.5 py-1 rounded-full font-medium">Photoshop</span>
+              <span class="text-xs bg-cream-200 text-eucalyptus px-2.5 py-1 rounded-full font-medium">CapCut</span>
+              <span class="text-xs bg-cream-200 text-eucalyptus px-2.5 py-1 rounded-full font-medium">InShot</span>
+              <span class="text-xs bg-blossom-pink text-eucalyptus px-2.5 py-1 rounded-full font-medium">ChatGPT</span>
+              <span class="text-xs bg-blossom-soft text-eucalyptus px-2.5 py-1 rounded-full font-medium">Gemini</span>
+              <span class="text-xs bg-blossom-soft text-eucalyptus px-2.5 py-1 rounded-full font-medium">Claude</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION & LEADERSHIP SECTION -->
+    <section id="education" class="max-w-6xl mx-auto px-6 py-16 border-t border-cream-200">
+      <div class="grid md:grid-cols-2 gap-10">
+        <!-- Education & Certifications -->
+        <div class="space-y-6">
+          <h2 class="font-serif text-2xl font-bold text-eucalyptus border-b border-cream-300 pb-3">Education & Certifications</h2>
+
+          <div class="space-y-2">
+            <h3 class="font-bold text-lg text-eucalyptus">B.S. Digital Marketing & Data Analytics</h3>
+            <p class="text-xs text-eucalyptus/70 font-medium">Delhi Skill and Entrepreneurship University (DSEU), Dwarka • 2024–2028 (Expected)</p>
+            <p class="text-xs text-eucalyptus/80 font-semibold bg-blossom-light/60 inline-block px-2.5 py-1 rounded border border-blossom-pink/30">
+              SGPA: 9.45 (Sem 4) • CGPA: 8.90 • CBSE Board: 93%
+            </p>
+          </div>
+
+          <div class="pt-4 space-y-3">
+            <h4 class="font-bold text-sm text-eucalyptus uppercase tracking-wider">Certifications</h4>
+            <ul class="space-y-2 text-xs sm:text-sm text-eucalyptus/80">
+              <li class="flex items-start gap-2">
+                <span class="text-blossom-deep font-bold">✓</span>
+                <span><strong>AI in Digital Marketing</strong> — Internshala Trainings (Nov 2025). Scored 93%; Top Performer.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-blossom-deep font-bold">✓</span>
+                <span><strong>Fundamentals of Digital Marketing</strong> — Google Digital Garage (2024)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-blossom-deep font-bold">✓</span>
+                <span><strong>Introduction to Digital Marketing</strong> — Great Learning (2024)</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-blossom-deep font-bold">✓</span>
+                <span><strong>Digital Marketing Course</strong> — Tutedude (Expected Dec 2026)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Leadership & Achievements -->
+        <div class="space-y-6">
+          <h2 class="font-serif text-2xl font-bold text-eucalyptus border-b border-cream-300 pb-3">Leadership & Achievements</h2>
+          <ul class="space-y-3 text-xs sm:text-sm text-eucalyptus/80 leading-relaxed">
+            <li class="flex items-start gap-2.5">
+              <span class="p-1 rounded-full bg-blossom-soft text-eucalyptus text-xs font-bold">★</span>
+              <span><strong>Host</strong> for College Foundation Day at Centre for Cultural Resources and Training (CCRT).</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="p-1 rounded-full bg-blossom-soft text-eucalyptus text-xs font-bold">★</span>
+              <span><strong>Scriptwriting Head</strong> for College Productions, crafting scripts and narratives.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="p-1 rounded-full bg-blossom-soft text-eucalyptus text-xs font-bold">★</span>
+              <span><strong>First Place Winner</strong> in debate, speech, poetry, and Chrysalis tech competition; 2nd place in ICAR/IARI Speech Contest.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="p-1 rounded-full bg-blossom-soft text-eucalyptus text-xs font-bold">★</span>
+              <span>Featured audience participant asking questions at live SIDBI MSME Samvaad recording.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- END GAME SECTION: "Catch The Leads! 🚀" -->
+    <section id="game-section" class="max-w-6xl mx-auto px-6 py-16 border-t border-cream-200">
+      <div class="dark-glass-card rounded-3xl p-6 sm:p-10 text-center shadow-2xl relative overflow-hidden">
+        <div class="mb-4">
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-blossom-soft tracking-tight flex items-center justify-center gap-2">
+            Catch The Leads! 🚀
+          </h2>
+          <p class="text-xs sm:text-sm text-cream-200/80 max-w-xl mx-auto mt-2 leading-relaxed">
+            Use keyboard <strong class="text-cream-50">Arrow Keys</strong> or touch controls to steer your campaign strategy. Eat <strong class="text-gold">High ROAS Leads (Gold)</strong> and avoid running into walls!
+          </p>
+        </div>
+
+        <!-- Snake Canvas Container -->
+        <div class="relative inline-block my-4">
+          <canvas id="snake-canvas" width="320" height="320" class="bg-eucalyptus-dark border-2 border-blossom-pink/60 rounded-2xl shadow-inner max-w-full"></canvas>
+          <div id="game-overlay" class="absolute inset-0 bg-eucalyptus-dark/80 backdrop-blur-xs rounded-2xl flex flex-col items-center justify-center p-4">
+            <p id="game-overlay-title" class="font-serif text-xl font-bold text-cream-50 mb-2">Ready to Launch?</p>
+            <button id="start-game-btn" type="button" class="bg-blossom-pink hover:bg-blossom-deep text-eucalyptus px-6 py-2.5 rounded-full font-bold text-sm tracking-wide shadow-lg transition-transform hover:scale-105 active:scale-95">
+              Start Campaign
+            </button>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-center gap-6 mt-2">
+          <div class="text-cream-50 text-sm font-bold font-mono">
+            Leads: <span id="lead-score" class="text-gold text-base">0</span>
+          </div>
+          <div class="text-cream-200/70 text-xs font-mono">
+            Best Score: <span id="best-score" class="text-blossom-pink">0</span>
+          </div>
+        </div>
+
+        <!-- Mobile Touch Controls -->
+        <div class="grid grid-cols-3 gap-2 max-w-[180px] mx-auto mt-6 md:hidden">
+          <div></div>
+          <button id="btn-up" class="bg-eucalyptus-light text-cream-50 p-3 rounded-xl border border-blossom-pink/30 text-xs font-bold active:bg-blossom-pink active:text-eucalyptus">▲</button>
+          <div></div>
+          <button id="btn-left" class="bg-eucalyptus-light text-cream-50 p-3 rounded-xl border border-blossom-pink/30 text-xs font-bold active:bg-blossom-pink active:text-eucalyptus">◄</button>
+          <button id="btn-down" class="bg-eucalyptus-light text-cream-50 p-3 rounded-xl border border-blossom-pink/30 text-xs font-bold active:bg-blossom-pink active:text-eucalyptus">▼</button>
+          <button id="btn-right" class="bg-eucalyptus-light text-cream-50 p-3 rounded-xl border border-blossom-pink/30 text-xs font-bold active:bg-blossom-pink active:text-eucalyptus">►</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FOOTER / CONTACT SECTION -->
+    <footer id="contact" class="bg-eucalyptus text-cream-50 pt-16 pb-12 rounded-t-3xl border-t border-cream-300/20">
+      <div class="max-w-6xl mx-auto px-6 text-center space-y-6">
+        <h2 class="font-serif text-3xl sm:text-5xl font-bold tracking-tight">Let’s talk about your content.</h2>
+        <p class="text-cream-200/80 max-w-xl mx-auto text-sm sm:text-base">
+          I’m open to remote social media and digital marketing roles and available to start immediately.
+        </p>
+
+        <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+          <a href="mailto:manasvi.bhati05@gmail.com" class="bg-gold text-eucalyptus hover:bg-gold/90 px-6 py-3.5 rounded-xl font-bold text-sm tracking-tight transition-all shadow-md">
+            manasvi.bhati05@gmail.com
+          </a>
+          <a href="./Manasvi_Bhati_Resume.pdf" download="Manasvi_Bhati_Resume.pdf" target="_blank" class="border border-cream-50/30 hover:bg-cream-50/10 text-cream-50 px-6 py-3.5 rounded-xl font-bold text-sm tracking-tight transition-all flex items-center gap-2">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+            Download Resume
+          </a>
+        </div>
+
+        <div id="win-banner" class="hidden max-w-md mx-auto p-4 rounded-xl bg-blossom-pink text-eucalyptus font-bold text-xs tracking-wide border border-white/20 mt-6 animate-bounce">
+          🏆 Achievement Unlocked: Interview Ready! You collected all 100 XP. Send me a message!
+        </div>
+
+        <div class="border-t border-cream-50/10 pt-8 text-xs text-cream-200/50">
+          © 2026 Manasvi Bhati. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="toast-banner fixed bottom-6 left-1/2 bg-gold text-eucalyptus border border-eucalyptus font-bold px-5 py-3 rounded-2xl shadow-2xl z-50 text-xs sm:text-sm flex items-center gap-2" role="status">
+      <span class="text-base">✨</span> <span id="toast-msg">Level Up!</span>
     </div>
-  </main>
 
+  </div>
+
+  <!-- Rotating Navbar Adjective Script -->
+  <script>
+    (function() {
+      const adjectives = [
+        "Campaign Alchemist", 
+        "Storyteller", 
+        "Growth Strategist", 
+        "Content Creator", 
+        "Data Marketer"
+      ];
+      let index = 0;
+      setInterval(() => {
+        index = (index + 1) % adjectives.length;
+        const el = document.getElementById('nav-adjective');
+        if (el) {
+          el.style.opacity = '0';
+          setTimeout(() => {
+            el.textContent = adjectives[index];
+            el.style.opacity = '1';
+          }, 200);
+        }
+      }, 2500);
+    })();
+  </script>
+
+  <!-- Main Website Script -->
+  <script>
+    (function(){
+      // Game & XP State
+      let xp = 0;
+      let openedCards = 0;
+      const maxXP = 100;
+      const levels = [
+        [0, "Rookie"],
+        [25, "Planner"],
+        [50, "Creator"],
+        [75, "Closer"],
+        [100, "Interview Ready"]
+      ];
+
+      const $ = (id) => document.getElementById(id);
+      let toastTimer;
+
+      function showToast(msg) {
+        const t = $("toast");
+        $("toast-msg").textContent = msg;
+        t.classList.add("show");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          t.classList.remove("show");
+        }, 2800);
+      }
+
+      function addXP(pts) {
+        const prevXP = xp;
+        xp = Math.min(maxXP, xp + pts);
+        $("fill").style.width = xp + "%";
+        $("pts").textContent = xp + " / " + maxXP + " XP";
+
+        let currentLvlIdx = 0;
+        levels.forEach((lvl, idx) => {
+          if (xp >= lvl[0]) currentLvlIdx = idx;
+        });
+
+        $("lvl").textContent = "Level " + (currentLvlIdx + 1) + ": " + levels[currentLvlIdx][1];
+
+        levels.forEach((lvl, idx) => {
+          if (prevXP < lvl[0] && xp >= lvl[0] && idx > 0) {
+            showToast("Level Up: " + lvl[1] + "!");
+          }
+        });
+
+        if (xp >= maxXP) {
+          $("win-banner").classList.remove("hidden");
+        }
+      }
+
+      // Proofs Cards Setup
+      const proofsData = [
+        ["Plan content ahead", "Weekly content calendars for four college societies.", "At Divjot, I replaced irregular posting with structured content calendars and pillars: reels, carousels, and statics."],
+        ["Deliver on time", "5–6 posts a week, no missed days, August 2026.", "Plus daily stories, maintaining brand voice across all 20 feed deliverables."],
+        ["Work with creative teams", "Lined up digital content with offline campaigns.", "Worked seamlessly with creative and ops teams, standardizing visual brand guidelines."],
+        ["Know good content", "I write, shoot, edit, and design it myself.", "Proficient in Canva, CapCut, InShot, and Photoshop. I craft high-retention reel hooks."],
+        ["Learn tools fast", "ChatGPT, Gemini & Claude integrated in my workflow.", "Scored 93% and earned Top Performer status in AI in Digital Marketing training."],
+        ["Remote and ready", "Delhi-based and fully remote capable.", "Equipped with high-speed setups and available for immediate start."]
+      ];
+
+      const proofsContainer = $("proofs-grid");
+      proofsData.forEach((p) => {
+        const card = document.createElement("button");
+        card.type = "button";
+        card.className = "glass-card p-6 rounded-2xl text-left border border-cream-300 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between group";
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="font-serif font-bold text-lg text-eucalyptus group-hover:text-blossom-deep transition-colors">${p[0]}</h3>
+              <span class="badge-icon text-[11px] bg-cream-200 text-eucalyptus px-2.5 py-0.5 rounded-full font-bold">Proof</span>
+            </div>
+            <p class="text-xs text-eucalyptus/70 leading-relaxed mb-3">${p[1]}</p>
+            <p class="more-text hidden text-xs text-eucalyptus bg-blossom-light/60 p-3 rounded-xl border border-blossom-pink/30 mb-3 leading-relaxed">${p[2]}</p>
+          </div>
+          <span class="tag-label text-[11px] font-bold text-blossom-deep flex items-center gap-1">
+            <span>Tap to collect proof</span> →
+          </span>
+        `;
+
+        card.addEventListener("click", () => {
+          const more = card.querySelector(".more-text");
+          const badge = card.querySelector(".badge-icon");
+          const tag = card.querySelector(".tag-label");
+
+          if (more.classList.contains("hidden")) {
+            more.classList.remove("hidden");
+            badge.className = "badge-icon text-[11px] bg-blossom-pink text-eucalyptus px-2.5 py-0.5 rounded-full font-bold";
+            badge.textContent = "★ Unlocked";
+            tag.innerHTML = '<span class="text-emerald-800">✓ Proof Collected (+10 XP)</span>';
+            card.classList.add("border-blossom-pink");
+            openedCards++;
+            addXP(10);
+            if (openedCards === 6) showToast("All 6 Proof Badges Collected!");
+          }
+        });
+        proofsContainer.appendChild(card);
+      });
+
+      // Interactive Campaign Quiz Logic (TRUTHFUL REFINED VERSION)
+      const scenarios = [
+        {
+          question: "📉 Scenario 1: Low engagement on early bag reels for Divjot. How do you turn it around?",
+          options: [
+            { text: "Use character storytelling ('Jerry' reel) to hook parents early", correct: true, feedback: "Great choice! Turned low initial engagement into active viewer interest with higher watch times and steady DM inquiries. 🎯" },
+            { text: "Delete the reel and post without changes", correct: false, feedback: "Oops! Reposting identical content without edits rarely improves audience response. 😅" },
+            { text: "Add 30 random hashtags to the caption", correct: false, feedback: "Hashtags won't help if the initial video hook isn't engaging viewers. 📉" }
+          ]
+        },
+        {
+          question: "🎯 Scenario 2: Customers have doubts about bag durability and compartment space from static photos. What's the visual solution?",
+          options: [
+            { text: "Shoot close-up feature callouts (zippers, padding, water resistance)", correct: true, feedback: "Spot on! Answered key customer questions directly through visuals, guiding viewers smoothly from reel to website. 🛍️" },
+            { text: "Change the background color of product photos", correct: false, feedback: "Background edits don't address durability or functional doubts. 📸" },
+            { text: "Increase font size on the website header", correct: false, feedback: "Header text won't solve visual product skepticism on social. 🚫" }
+          ]
+        },
+        {
+          question: "🔥 Scenario 3: Need to expand reach for a Gen-Z campus lifestyle video without a paid ad budget. What's the best approach?",
+          options: [
+            { text: "Produce a high-vibe campus aesthetic reel with trending outfit pairings", correct: true, feedback: "Awesome! Organic shares extended reel reach effectively without relying on paid ad spend. 🔥" },
+            { text: "Upload a long 10-minute unboxing video", correct: false, feedback: "Long unboxings are harder to generate quick organic shares for Gen-Z audiences. ⏳" },
+            { text: "Run a simple static image search ad", correct: false, feedback: "Static search ads don't leverage organic social sharing power. 📉" }
+          ]
+        }
+      ];
+
+      let currentStep = 0;
+
+      function loadQuestion() {
+        const q = scenarios[currentStep];
+        document.getElementById('quiz-scenario').textContent = q.question;
+        const optionsContainer = document.getElementById('quiz-options');
+        const feedbackEl = document.getElementById('quiz-feedback');
+        
+        optionsContainer.innerHTML = '';
+        feedbackEl.classList.add('hidden');
+
+        q.options.forEach(opt => {
+          const btn = document.createElement('button');
+          btn.className = "w-full text-left text-xs sm:text-sm font-semibold text-eucalyptus bg-cream-100 hover:bg-blossom-light border border-cream-300 p-3.5 rounded-xl transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5";
+          btn.textContent = opt.text;
+          btn.onclick = () => selectOption(opt);
+          optionsContainer.appendChild(btn);
+        });
+      }
+
+      function selectOption(opt) {
+        const feedbackEl = document.getElementById('quiz-feedback');
+        feedbackEl.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-rose-100', 'text-rose-800');
+
+        if (opt.correct) {
+          document.getElementById('roi-score').textContent = `High`;
+          feedbackEl.classList.add('bg-emerald-100', 'text-emerald-800');
+          feedbackEl.textContent = opt.feedback;
+          addXP(10);
+        } else {
+          feedbackEl.classList.add('bg-rose-100', 'text-rose-800');
+          feedbackEl.textContent = opt.feedback;
+        }
+
+        setTimeout(() => {
+          currentStep = (currentStep + 1) % scenarios.length;
+          loadQuestion();
+        }, 2500);
+      }
+
+      loadQuestion();
+
+      // Cherry Blossom Canvas Animation
+      const canvas = $("blossom-canvas");
+      const ctx = canvas.getContext("2d");
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+
+      window.addEventListener("resize", () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const petals = [];
+      const petalCount = 28;
+      const colors = ["#F4C2C2", "#FFD1DC", "#E89CAE", "#FFF0F3"];
+
+      for (let i = 0; i < petalCount; i++) {
+        petals.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          size: Math.random() * 7 + 5,
+          speedY: Math.random() * 1.2 + 0.6,
+          speedX: Math.random() * 0.8 - 0.4,
+          angle: Math.random() * 360,
+          spin: Math.random() * 2 - 1,
+          color: colors[Math.floor(Math.random() * colors.length)]
+        });
+      }
+
+      function drawPetals() {
+        ctx.clearRect(0, 0, width, height);
+        petals.forEach((p) => {
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.angle * Math.PI) / 180);
+          ctx.fillStyle = p.color;
+          ctx.globalAlpha = 0.65;
+          ctx.beginPath();
+          ctx.ellipse(0, 0, p.size, p.size / 2, 0, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+
+          p.y += p.speedY;
+          p.x += Math.sin(p.y / 30) + p.speedX;
+          p.angle += p.spin;
+
+          if (p.y > height + 20) {
+            p.y = -20;
+            p.x = Math.random() * width;
+          }
+        });
+        requestAnimationFrame(drawPetals);
+      }
+      drawPetals();
+
+      // Custom Pink Cursor Tracker
+      const dot = $("cursor-dot");
+      const ring = $("cursor-ring");
+      let mouseX = -100, mouseY = -100;
+      let ringX = -100, ringY = -100;
+
+      window.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        dot.style.left = mouseX + "px";
+        dot.style.top = mouseY + "px";
+      });
+
+      function renderCursor() {
+        ringX += (mouseX - ringX) * 0.15;
+        ringY += (mouseY - ringY) * 0.15;
+        ring.style.left = ringX + "px";
+        ring.style.top = ringY + "px";
+        requestAnimationFrame(renderCursor);
+      }
+      renderCursor();
+
+      document.querySelectorAll("a, button, input, .glass-card").forEach((el) => {
+        el.addEventListener("mouseenter", () => {
+          ring.style.width = "48px";
+          ring.style.height = "48px";
+          ring.style.borderColor = "rgba(232, 156, 174, 0.9)";
+        });
+        el.addEventListener("mouseleave", () => {
+          ring.style.width = "32px";
+          ring.style.height = "32px";
+          ring.style.borderColor = "rgba(232, 156, 174, 0.6)";
+        });
+      });
+
+      // Catch The Leads Mini-Game
+      const gCanvas = $("snake-canvas");
+      const gCtx = gCanvas.getContext("2d");
+      const gridSize = 16;
+      const tileCount = gCanvas.width / gridSize;
+
+      let snake = [{ x: 10, y: 10 }];
+      let dx = 1, dy = 0;
+      let food = { x: 5, y: 5 };
+      let leadsScore = 0;
+      let bestScore = 0;
+      let gameInterval = null;
+      let gameRunning = false;
+
+      function spawnFood() {
+        food.x = Math.floor(Math.random() * tileCount);
+        food.y = Math.floor(Math.random() * tileCount);
+        snake.forEach(part => {
+          if (part.x === food.x && part.y === food.y) spawnFood();
+        });
+      }
+
+      function gameLoop() {
+        const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+
+        if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount) {
+          endGame();
+          return;
+        }
+
+        for (let i = 0; i < snake.length; i++) {
+          if (snake[i].x === head.x && snake[i].y === head.y) {
+            endGame();
+            return;
+          }
+        }
+
+        snake.unshift(head);
+
+        if (head.x === food.x && head.y === food.y) {
+          leadsScore += 1;
+          $("lead-score").textContent = leadsScore;
+          if (leadsScore > bestScore) {
+            bestScore = leadsScore;
+            $("best-score").textContent = bestScore;
+          }
+          spawnFood();
+        } else {
+          snake.pop();
+        }
+
+        drawGame();
+      }
+
+      function drawGame() {
+        gCtx.fillStyle = "#0D1A14";
+        gCtx.fillRect(0, 0, gCanvas.width, gCanvas.height);
+
+        gCtx.fillStyle = "#FFB703";
+        gCtx.shadowColor = "#FFB703";
+        gCtx.shadowBlur = 8;
+        gCtx.beginPath();
+        gCtx.arc((food.x * gridSize) + gridSize/2, (food.y * gridSize) + gridSize/2, gridSize/2 - 2, 0, Math.PI * 2);
+        gCtx.fill();
+        gCtx.shadowBlur = 0;
+
+        snake.forEach((part, index) => {
+          gCtx.fillStyle = index === 0 ? "#F4C2C2" : "#E89CAE";
+          gCtx.beginPath();
+          gCtx.roundRect(part.x * gridSize + 1, part.y * gridSize + 1, gridSize - 2, gridSize - 2, 4);
+          gCtx.fill();
+        });
+      }
+
+      function startGame() {
+        snake = [{ x: 8, y: 8 }, { x: 7, y: 8 }];
+        dx = 1; dy = 0;
+        leadsScore = 0;
+        $("lead-score").textContent = "0";
+        spawnFood();
+        $("game-overlay").classList.add("hidden");
+        gameRunning = true;
+        clearInterval(gameInterval);
+        gameInterval = setInterval(gameLoop, 110);
+      }
+
+      function endGame() {
+        clearInterval(gameInterval);
+        gameRunning = false;
+        $("game-overlay-title").textContent = "Campaign Over! Leads Captured: " + leadsScore;
+        $("start-game-btn").textContent = "Retry Campaign";
+        $("game-overlay").classList.remove("hidden");
+      }
+
+      $("start-game-btn").addEventListener("click", startGame);
+
+      window.addEventListener("keydown", (e) => {
+        if (!gameRunning) return;
+        if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
+          e.preventDefault();
+        }
+        if (e.key === "ArrowUp" && dy !== 1) { dx = 0; dy = -1; }
+        if (e.key === "ArrowDown" && dy !== -1) { dx = 0; dy = 1; }
+        if (e.key === "ArrowLeft" && dx !== 1) { dx = -1; dy = 0; }
+        if (e.key === "ArrowRight" && dx !== -1) { dx = 1; dy = 0; }
+      });
+
+      $("btn-up").addEventListener("click", () => { if (dy !== 1) { dx = 0; dy = -1; } });
+      $("btn-down").addEventListener("click", () => { if (dy !== -1) { dx = 0; dy = 1; } });
+      $("btn-left").addEventListener("click", () => { if (dx !== 1) { dx = -1; dy = 0; } });
+      $("btn-right").addEventListener("click", () => { if (dx !== -1) { dx = 1; dy = 0; } });
+
+      drawGame();
+
+    })();
+  </script>
 </body>
 </html>
