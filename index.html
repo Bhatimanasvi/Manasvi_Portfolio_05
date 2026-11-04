@@ -97,38 +97,6 @@
     border: 1px solid rgba(232, 156, 174, 0.25);
   }
 
-  /* Interactive Tile Grid */
-  .tile {
-    aspect-ratio: 4/5;
-    border: 1.5px dashed #2B453A;
-    border-radius: 8px;
-    background: transparent;
-    color: #2B453A;
-    font-weight: 700;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .tile:hover {
-    background: rgba(244, 194, 194, 0.25);
-    border-color: #E89CAE;
-    transform: translateY(-2px);
-  }
-  .tile.on {
-    border-style: solid;
-    color: #1E332A;
-    cursor: default;
-    animation: pop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
-  .tile.on.r { background: #FFB703; border-color: #E0A200; }
-  .tile.on.c { background: #F4C2C2; border-color: #E89CAE; }
-  .tile.on.s { background: #9BE7C4; border-color: #7AD4AB; }
-
-  @keyframes pop {
-    0% { transform: scale(0.6); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
-  }
-
   #blossom-canvas {
     position: fixed;
     top: 0;
@@ -188,10 +156,14 @@
 
     <!-- Top Navigation -->
     <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <div class="font-serif font-extrabold text-2xl tracking-tight text-eucalyptus flex items-center gap-2">
-        <span>MB<span class="text-blossom-deep">.</span></span>
-        <span class="text-xs font-mono bg-blossom-soft px-2 py-0.5 rounded-full border border-blossom-deep/40 text-eucalyptus">✨ Creator</span>
-      </div>
+      <!-- Rotating Logo & Adjective -->
+      <a href="./index.html" class="font-serif font-extrabold text-2xl tracking-tight text-eucalyptus flex items-center gap-2.5">
+        <span>Manasvi</span>
+        <span class="text-xs font-sans font-bold bg-blossom-light border-2 border-[#1E332A] shadow-[2px_2px_0px_#1E332A] px-3 py-1 rounded-full text-eucalyptus flex items-center gap-1.5 transition-all">
+          ✨ <span id="nav-adjective" class="transition-opacity duration-200">Campaign Alchemist</span>
+        </span>
+      </a>
+
       <div class="hidden md:flex items-center gap-8 font-medium text-sm text-eucalyptus/80">
         <a href="#about" class="hover:text-blossom-deep transition-colors">About</a>
         <a href="#metrics" class="hover:text-blossom-deep transition-colors">Impact</a>
@@ -204,7 +176,7 @@
         </a>
       </div>
       
-      <!-- Option C: Top Nav Resume Download CTA -->
+      <!-- Top Nav Resume Download CTA -->
       <a href="./Manasvi_Bhati_Resume.pdf" download="Manasvi_Bhati_Resume.pdf" target="_blank" class="bg-eucalyptus hover:bg-eucalyptus-light text-cream-50 px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all shadow-md hover:shadow-lg flex items-center gap-2">
         <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>
         Resume
@@ -236,13 +208,11 @@
 
           <!-- Hero Buttons -->
           <div class="flex flex-wrap items-center gap-4 pt-2">
-            <!-- Option C: Hero Primary Resume Download CTA -->
             <a href="./Manasvi_Bhati_Resume.pdf" download="Manasvi_Bhati_Resume.pdf" target="_blank" class="bg-eucalyptus text-cream-50 hover:bg-eucalyptus-light px-6 py-3.5 rounded-xl font-bold text-sm tracking-tight transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 flex items-center gap-2.5">
               <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
               Download Resume
             </a>
 
-            <!-- View My Work CTA -->
             <a href="./work.html" class="bg-blossom-pink text-eucalyptus hover:bg-blossom-deep border border-eucalyptus/20 px-6 py-3.5 rounded-xl font-bold text-sm tracking-tight transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 flex items-center gap-2.5">
               <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
               View My Work
@@ -254,7 +224,7 @@
             </a>
           </div>
 
-         <div class="flex flex-wrap gap-3 pt-3 text-xs font-bold font-sans">
+          <div class="flex flex-wrap gap-3 pt-3 text-xs font-bold font-sans">
             <!-- Sticker 1: Based in Delhi -->
             <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#F4C2C2] text-[#1E332A] border-2 border-[#1E332A] shadow-[2px_2px_0px_#1E332A] transform -rotate-1 hover:rotate-0 hover:scale-105 transition-all cursor-default">
               <span>📍 Based in Delhi</span>
@@ -275,36 +245,32 @@
         <!-- Right Hero Interactive Game Card & Visual Phone Mockup -->
         <div class="lg:col-span-5 space-y-6">
           <div class="relative">
-            <!-- Goofy Sticker Accents -->
+            <!-- Sticker Accents -->
             <div class="absolute -top-4 -right-2 bg-gold text-eucalyptus text-xs font-black px-3 py-1 rounded-full border border-eucalyptus sticker-badge z-20">
               ⚡ 100% On-Time!
             </div>
             
-            <div class="glass-card p-6 rounded-2xl border border-cream-300 shadow-xl space-y-4">
-              <div class="flex items-center justify-between border-b border-cream-300/80 pb-3">
+            <!-- Interactive Campaign Quiz Widget -->
+            <div class="glass-card rounded-2xl p-6 sm:p-8 border border-cream-300 shadow-xl max-w-xl mx-auto relative overflow-hidden">
+              <div class="flex items-center justify-between mb-6">
                 <div>
-                  <h2 class="font-serif font-bold text-xl text-eucalyptus">Your turn: publish August</h2>
-                  <p class="text-xs text-eucalyptus/70 mt-0.5">Tap each tile to publish a post & earn XP.</p>
+                  <span class="text-[10px] font-bold bg-gold text-eucalyptus px-2.5 py-1 rounded-full uppercase tracking-wider">
+                    Interactive Challenge
+                  </span>
+                  <h2 class="font-serif text-2xl font-bold text-eucalyptus mt-2">Fix My Campaign! 🚀</h2>
                 </div>
-                <span class="text-xs font-mono font-bold bg-blossom-light text-blossom-deep px-2.5 py-1 rounded-full border border-blossom-pink/40">20 Posts</span>
+                <div class="text-right">
+                  <span class="text-xs text-eucalyptus/70 font-semibold block">Campaign ROI</span>
+                  <span id="roi-score" class="font-serif text-xl font-extrabold text-eucalyptus">+0%</span>
+                </div>
               </div>
 
-              <!-- Grid of 20 interactive tiles -->
-              <div id="posts-grid" class="grid grid-cols-5 gap-2"></div>
-
-              <div class="flex items-center justify-between text-xs font-bold text-eucalyptus/80 pt-1">
-                <span id="count" class="bg-cream-200 px-2.5 py-1 rounded-md">Published 0 of 20</span>
-                <span id="streak" class="text-eucalyptus/60">Missed days: 0</span>
-              </div>
-
-              <div class="flex items-center justify-start gap-4 text-[11px] font-medium text-eucalyptus/70 border-t border-cream-300/60 pt-2">
-                <span class="flex items-center gap-1.5"><i class="w-3 h-3 rounded bg-gold inline-block border border-black/10"></i> 11 reels</span>
-                <span class="flex items-center gap-1.5"><i class="w-3 h-3 rounded bg-blossom-pink inline-block border border-black/10"></i> 5 carousels</span>
-                <span class="flex items-center gap-1.5"><i class="w-3 h-3 rounded bg-[#9BE7C4] inline-block border border-black/10"></i> 4 statics</span>
-              </div>
-
-              <div id="done-banner" class="hidden p-3 rounded-xl bg-eucalyptus text-cream-50 text-xs font-semibold leading-relaxed border border-blossom-pink/30 animate-fade-in">
-                ✨ That’s the Divjot month: 20 feed posts at 5–6 a week, plus daily stories. Zero missed days!
+              <div id="quiz-container">
+                <p id="quiz-scenario" class="text-sm sm:text-base font-medium text-eucalyptus/90 mb-5 leading-relaxed bg-cream-50 p-4 rounded-xl border border-cream-200">
+                  Loading campaign scenario...
+                </p>
+                <div id="quiz-options" class="space-y-3"></div>
+                <div id="quiz-feedback" class="hidden mt-4 p-3 rounded-lg text-xs font-bold text-center"></div>
               </div>
             </div>
           </div>
@@ -312,14 +278,13 @@
       </div>
     </section>
 
-    <!-- KEY METRICS & IMPACT SECTION WITH FLASHY CARDS -->
-    <section id="metrics" class="max-w-6xl mx-auto px-6 py-12 border-t border-cream-200">
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 text-center">
+    <!-- METRICS SECTION -->
+    <section id="metrics" class="max-w-6xl mx-auto px-6 py-10">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div class="glass-card p-6 rounded-2xl border border-cream-300 relative overflow-hidden group hover:border-blossom-deep transition-all">
-          <div class="absolute -top-3 -right-3 w-12 h-12 bg-blossom-soft/40 rounded-full blur-sm"></div>
-          <div class="font-serif font-extrabold text-3xl sm:text-4xl text-eucalyptus">20+</div>
-          <div class="text-xs font-bold uppercase tracking-wider text-blossom-deep mt-1">Feed Posts / Month</div>
-          <p class="text-[11px] text-eucalyptus/70 mt-1">100% on-time execution at Divjot</p>
+          <div class="font-serif font-extrabold text-3xl sm:text-4xl text-eucalyptus">20/20</div>
+          <div class="text-xs font-bold uppercase tracking-wider text-blossom-deep mt-1">Posts Published</div>
+          <p class="text-[11px] text-eucalyptus/70 mt-1">August 2026 Bag Campaign</p>
         </div>
 
         <div class="glass-card p-6 rounded-2xl border border-cream-300 relative overflow-hidden group hover:border-gold transition-all">
@@ -367,7 +332,7 @@
         </span>
       </div>
 
-      <!-- Main Case Study Card with Visual Image -->
+      <!-- Main Case Study Card -->
       <article class="glass-card p-6 sm:p-10 rounded-3xl border border-cream-300 shadow-xl mb-8 overflow-hidden">
         <div class="grid lg:grid-cols-12 gap-8 items-center mb-8">
           <div class="lg:col-span-7 space-y-3">
@@ -434,7 +399,7 @@
         </div>
       </article>
 
-      <!-- Secondary Work Cards with Images -->
+      <!-- Secondary Work Cards -->
       <div class="grid md:grid-cols-2 gap-6">
         <div class="glass-card rounded-2xl border border-cream-300 overflow-hidden flex flex-col justify-between group">
           <div class="relative overflow-hidden">
@@ -619,7 +584,6 @@
     <!-- END GAME SECTION: "Catch The Leads! 🚀" -->
     <section id="game-section" class="max-w-6xl mx-auto px-6 py-16 border-t border-cream-200">
       <div class="dark-glass-card rounded-3xl p-6 sm:p-10 text-center shadow-2xl relative overflow-hidden">
-        
         <div class="mb-4">
           <h2 class="font-serif text-3xl sm:text-4xl font-bold text-blossom-soft tracking-tight flex items-center justify-center gap-2">
             Catch The Leads! 🚀
@@ -674,7 +638,6 @@
           <a href="mailto:manasvi.bhati05@gmail.com" class="bg-gold text-eucalyptus hover:bg-gold/90 px-6 py-3.5 rounded-xl font-bold text-sm tracking-tight transition-all shadow-md">
             manasvi.bhati05@gmail.com
           </a>
-          <!-- Option C: Footer Resume Download CTA -->
           <a href="./Manasvi_Bhati_Resume.pdf" download="Manasvi_Bhati_Resume.pdf" target="_blank" class="border border-cream-50/30 hover:bg-cream-50/10 text-cream-50 px-6 py-3.5 rounded-xl font-bold text-sm tracking-tight transition-all flex items-center gap-2">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
             Download Resume
@@ -698,11 +661,36 @@
 
   </div>
 
+  <!-- Rotating Navbar Adjective Script -->
+  <script>
+    (function() {
+      const adjectives = [
+        "Campaign Alchemist", 
+        "Storyteller", 
+        "Growth Strategist", 
+        "Content Creator", 
+        "Data Marketer"
+      ];
+      let index = 0;
+      setInterval(() => {
+        index = (index + 1) % adjectives.length;
+        const el = document.getElementById('nav-adjective');
+        if (el) {
+          el.style.opacity = '0';
+          setTimeout(() => {
+            el.textContent = adjectives[index];
+            el.style.opacity = '1';
+          }, 200);
+        }
+      }, 2500);
+    })();
+  </script>
+
+  <!-- Main Website Script -->
   <script>
     (function(){
       // Game & XP State
       let xp = 0;
-      let pubCount = 0;
       let openedCards = 0;
       const maxXP = 100;
       const levels = [
@@ -750,35 +738,6 @@
         }
       }
 
-      // August Interactive Grid
-      const tileSequence = "rcrrsrcrsrcrrcsrrcsr".split("");
-      const tileNames = { r: "reel", c: "carousel", s: "static post" };
-      const tileLabels = { r: "R", c: "C", s: "S" };
-      const postsContainer = $("posts-grid");
-
-      tileSequence.forEach((type, i) => {
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "tile " + type;
-        btn.textContent = "+";
-        btn.setAttribute("aria-label", "Post " + (i + 1) + " of 20, " + tileNames[type] + ". Publish");
-
-        btn.addEventListener("click", () => {
-          if (btn.classList.contains("on")) return;
-          btn.classList.add("on");
-          btn.textContent = tileLabels[type];
-          pubCount++;
-          $("count").textContent = "Published " + pubCount + " of 20";
-          addXP(2); // 20 tiles * 2 XP = 40 XP
-
-          if (pubCount === 20) {
-            $("done-banner").classList.remove("hidden");
-            showToast("August Delivered! 20/20 Posts Completed.");
-          }
-        });
-        postsContainer.appendChild(btn);
-      });
-
       // Proofs Cards Setup
       const proofsData = [
         ["Plan content ahead", "Weekly content calendars for four college societies.", "At Divjot, I replaced irregular posting with structured content calendars and pillars: reels, carousels, and statics."],
@@ -820,12 +779,84 @@
             tag.innerHTML = '<span class="text-emerald-800">✓ Proof Collected (+10 XP)</span>';
             card.classList.add("border-blossom-pink");
             openedCards++;
-            addXP(10); // 6 cards * 10 XP = 60 XP
+            addXP(10);
             if (openedCards === 6) showToast("All 6 Proof Badges Collected!");
           }
         });
         proofsContainer.appendChild(card);
       });
+
+      // Interactive Campaign Quiz Logic
+      const scenarios = [
+        {
+          question: "📉 Scenario 1: Divjot Bags ke naye Instagram Reel par initial 3 seconds mein drop-off bohot zyada hai. Aap sabse pehle kya fix karengi?",
+          options: [
+            { text: "Hook change karke high-energy visual & text overlay add karenge", correct: true, feedback: "Boom! +150% Watch Time! Hooking the audience early saved the reach. 🎯" },
+            { text: "Post ko delete karke same content dobara re-upload karenge", correct: false, feedback: "Oops! Algorithm doesn't reward reposting identical content without changes. 😅" },
+            { text: "Caption mein 30 trending hashtags add karenge", correct: false, feedback: "Hashtags won't fix drop-off if the video hook isn't engaging. 📉" }
+          ]
+        },
+        {
+          question: "🎯 Scenario 2: High website traffic aa raha hai lekin college students bag buy nahi kar rahe. Best conversion booster kya hoga?",
+          options: [
+            { text: "Product photos change karke aesthetic lifestyle photos add karenge", correct: false, feedback: "Good effort, but pricing & trust incentives drive instant college sales! 📸" },
+            { text: "Limited-time 'Student Discount + Free Shipping' pop-up launch karenge", correct: true, feedback: "Spot on! +220% Conversions! Perfect incentive for budget-conscious students. 🛍️" },
+            { text: "Website ka font size bada kar denge", correct: false, feedback: "Typography won't solve conversion friction here. 🚫" }
+          ]
+        },
+        {
+          question: "🔥 Scenario 3: Ad spend budget limited hai aur immediate engagement chahiye. Konsa format pick karengi?",
+          options: [
+            { text: "Relatable Campus Life Meme Reel + UGC Creator Review", correct: true, feedback: "Awesome! +300% Engagement! High virality at minimal cost. 🔥" },
+            { text: "Long-form 5-minute YouTube Product Unboxing Video", correct: false, feedback: "Too long for immediate high engagement on a tight budget. ⏳" },
+            { text: "Static Image Banner Ad on Google Search", correct: false, feedback: "Low organic shareability compared to short-form video. 📉" }
+          ]
+        }
+      ];
+
+      let currentStep = 0;
+      let totalROI = 0;
+
+      function loadQuestion() {
+        const q = scenarios[currentStep];
+        document.getElementById('quiz-scenario').textContent = q.question;
+        const optionsContainer = document.getElementById('quiz-options');
+        const feedbackEl = document.getElementById('quiz-feedback');
+        
+        optionsContainer.innerHTML = '';
+        feedbackEl.classList.add('hidden');
+
+        q.options.forEach(opt => {
+          const btn = document.createElement('button');
+          btn.className = "w-full text-left text-xs sm:text-sm font-semibold text-eucalyptus bg-cream-100 hover:bg-blossom-light border border-cream-300 p-3.5 rounded-xl transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5";
+          btn.textContent = opt.text;
+          btn.onclick = () => selectOption(opt);
+          optionsContainer.appendChild(btn);
+        });
+      }
+
+      function selectOption(opt) {
+        const feedbackEl = document.getElementById('quiz-feedback');
+        feedbackEl.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-rose-100', 'text-rose-800');
+
+        if (opt.correct) {
+          totalROI += 150;
+          document.getElementById('roi-score').textContent = `+${totalROI}%`;
+          feedbackEl.classList.add('bg-emerald-100', 'text-emerald-800');
+          feedbackEl.textContent = opt.feedback;
+          addXP(10);
+        } else {
+          feedbackEl.classList.add('bg-rose-100', 'text-rose-800');
+          feedbackEl.textContent = opt.feedback;
+        }
+
+        setTimeout(() => {
+          currentStep = (currentStep + 1) % scenarios.length;
+          loadQuestion();
+        }, 2200);
+      }
+
+      loadQuestion();
 
       // Cherry Blossom Canvas Animation
       const canvas = $("blossom-canvas");
@@ -903,7 +934,7 @@
       }
       renderCursor();
 
-      document.querySelectorAll("a, button, input, .tile, .glass-card").forEach((el) => {
+      document.querySelectorAll("a, button, input, .glass-card").forEach((el) => {
         el.addEventListener("mouseenter", () => {
           ring.style.width = "48px";
           ring.style.height = "48px";
